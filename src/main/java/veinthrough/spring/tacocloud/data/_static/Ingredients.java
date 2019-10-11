@@ -1,4 +1,4 @@
-package veinthrough.spring.tacocloud.data;
+package veinthrough.spring.tacocloud.data._static;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
