@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import veinthrough.spring.tacocloud.data.IngredientRepository;
 import veinthrough.spring.tacocloud.data.model.Ingredient;
 
+import java.util.Optional;
+
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
@@ -18,6 +20,8 @@ public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
     @Override
     public Ingredient convert(String id) {
-        return repository.getOneById(id);
+        Optional<Ingredient> optionalIngredient = repository.findById(id);
+        return optionalIngredient.isPresent() ?
+                optionalIngredient.get() : null;
     }
 }

@@ -1,18 +1,24 @@
 package veinthrough.spring.tacocloud.data.model;
 
 import lombok.Data;
+import veinthrough.spring.tacocloud.util.Identifiable;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
 @Data
-public class Taco {
+@Entity
+public class Taco implements Identifiable<Long> {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
 
     @NotNull
     @Size(min = 1, message = "You must choose at least 1 ingredient.")
+    @ManyToMany(targetEntity=Ingredient.class)
     private List<Ingredient> ingredients;
 
     @NotNull
@@ -20,4 +26,14 @@ public class Taco {
     private String name;
 
     private Date createdAt;
+
+    @PrePersist
+    void createdAt() {
+        this.createdAt = new Date();
+    }
+
+    @Override
+    public Long getIdentifier() {
+        return getId();
+    }
 }

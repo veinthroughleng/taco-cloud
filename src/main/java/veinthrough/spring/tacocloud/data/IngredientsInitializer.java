@@ -1,20 +1,27 @@
-package veinthrough.spring.tacocloud.data._static;
-
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import veinthrough.spring.tacocloud.data.model.Ingredient;
-import static veinthrough.spring.tacocloud.data.model.Ingredient.INGREDIENT_TYPE;
+package veinthrough.spring.tacocloud.data;
 
 import com.google.common.collect.Lists;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import veinthrough.spring.tacocloud.data.model.Ingredient;
+
+import static veinthrough.spring.tacocloud.data.model.Ingredient.INGREDIENT_TYPE;
+
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class Ingredients {
+@Component
+public class IngredientsInitializer {
+    private final static List<Ingredient> ingredients;
+    private static boolean initialized = false;
+    private IngredientRepository ingredientRepo;
 
-    private static List<Ingredient> getIngredients() {
-        return Lists.newArrayList(
+    @Autowired
+    public IngredientsInitializer(IngredientRepository ingredientRepo) {
+        this.ingredientRepo = ingredientRepo;
+    }
+
+    static {
+        ingredients = Lists.newArrayList(
                 new Ingredient("FLTO", "Flour Tortilla", INGREDIENT_TYPE.WRAP),
                 new Ingredient("COTO", "Corn Tortilla", INGREDIENT_TYPE.WRAP),
                 new Ingredient("GRBF", "Ground Beef", INGREDIENT_TYPE.PROTEIN),
@@ -26,11 +33,17 @@ public class Ingredients {
                 new Ingredient("SLSA", "Salsa", INGREDIENT_TYPE.SAUCE),
                 new Ingredient("SRCR", "Sour Cream", INGREDIENT_TYPE.SAUCE)
         );
-
     }
 
-    public static Map<INGREDIENT_TYPE, List<Ingredient>> getTypedIngredients() {
-        return getIngredients().stream()
-                .collect(Collectors.groupingBy(Ingredient::getType));
+    public void initialize() {
+        if (!initialized) {
+            ingredientRepo.saveAll(ingredients);
+        }
+    }
+
+    public void initialize(Iterable<Ingredient> others) {
+        if (!initialized) {
+            ingredientRepo.saveAll(others);
+        }
     }
 }

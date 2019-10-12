@@ -2,6 +2,9 @@ package veinthrough.spring.tacocloud.data.model;
 
 import com.google.common.collect.ImmutableMap;
 import lombok.Data;
+import veinthrough.spring.tacocloud.util.Identifiable;
+
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -11,9 +14,16 @@ import java.util.List;
 import java.util.Map;
 
 @Data
-public class Order {
+@Entity
+@Table(name = "Taco_Order")
+public class Order implements Identifiable<Long> {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @ManyToMany(targetEntity = Taco.class)
     private List<Taco> tacos = new ArrayList<>();
 
     @NotBlank(message = "Name is required.")
@@ -47,6 +57,16 @@ public class Order {
 
     public void addDesign(Taco taco) {
         tacos.add(taco);
+    }
+
+    @PrePersist
+    void placedAt() {
+        this.placedAt = new Date();
+    }
+
+    @Override
+    public Long getIdentifier() {
+        return getId();
     }
 
     public Map<String, Object> detailsMap() {

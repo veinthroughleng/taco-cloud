@@ -1,5 +1,6 @@
 package veinthrough.spring.tacocloud.web;
 
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,15 +9,13 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import veinthrough.spring.tacocloud.MethodLog;
 import veinthrough.spring.tacocloud.data.IngredientRepository;
+import veinthrough.spring.tacocloud.data.IngredientsInitializer;
 import veinthrough.spring.tacocloud.data.TacoRepository;
-import veinthrough.spring.tacocloud.data.model.Ingredient;
 import veinthrough.spring.tacocloud.data.model.Order;
 import veinthrough.spring.tacocloud.data.model.Taco;
+import veinthrough.spring.tacocloud.data.model.converter.ListsToMap;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Controller
@@ -26,11 +25,16 @@ public class DesignTacoController {
     private static final String VIEW_DESIGN = "design";
     private final IngredientRepository ingredientRepo;
     private TacoRepository designRepo;
+    private IngredientsInitializer ingredientsInit;
 
     @Autowired
-    public DesignTacoController(IngredientRepository ingredientRepo, TacoRepository designRepo) {
+    public DesignTacoController(IngredientRepository ingredientRepo,
+                                TacoRepository designRepo,
+                                IngredientsInitializer ingredientsInit) {
         this.ingredientRepo = ingredientRepo;
         this.designRepo = designRepo;
+        this.ingredientsInit = ingredientsInit;
+        this.ingredientsInit.initialize();
     }
 
     @ModelAttribute(name = "order")
@@ -44,12 +48,13 @@ public class DesignTacoController {
     }
 
     private void addIngredientsToModel(Model model) {
-        Map<String, List<Ingredient>> typedIngredients = new HashMap<>();
-        ingredientRepo.getTypedIngredients()
-                .forEach((type, ingredients) ->
-                        typedIngredients.put(type.toString().toLowerCase(), ingredients));
-        model.addAllAttributes(typedIngredients);
+        final boolean LOWER_CASE = true;
+        model.addAllAttributes(
+                ListsToMap.toMap(
+                        Lists.newArrayList(ingredientRepo.findAll()),
+                        ingredient -> ingredient.getTypeString(LOWER_CASE)));
     }
+
     @GetMapping
     public String showDesignForm(Model model) {
         addIngredientsToModel(model);
