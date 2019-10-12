@@ -1,13 +1,16 @@
 package veinthrough.spring.tacocloud.data.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
-@RequiredArgsConstructor
+@Data
+@Builder
+@AllArgsConstructor
 public class Ingredient {
-    @Getter private final String id;
-    @Getter private final String name;
-    @Getter private final INGREDIENT_TYPE type;
+    private final String id;
+    private final String name;
+    private final INGREDIENT_TYPE type;
 
     public enum INGREDIENT_TYPE {
         WRAP,

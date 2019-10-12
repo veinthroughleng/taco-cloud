@@ -10,7 +10,7 @@
         <img th:src="@{/images/TacoCloud.png}"/>
 
         <!-- Taco object -->
-        <form method="POST" th:object="${design}" >
+        <form method="POST" th:object="${taco}" >
 
             <span class="validationError"
                   th:if="${#fields.hasErrors('ingredients')}"
