@@ -10,7 +10,8 @@
         <img th:src="@{/images/TacoCloud.png}"/>
 
         <!-- Taco object -->
-        <form method="POST" th:object="${taco}" >
+        <!-- After adding Spring Security, if without th:action, will got 403 Forbidden -->
+        <form method="POST" th:object="${taco}" th:action="@{/design}" id="tacoForm">
 
             <span class="validationError"
                   th:if="${#fields.hasErrors('ingredients')}"
@@ -63,7 +64,6 @@
                 <h3>Name your taco creation:</h3>
                 <!-- Taco.name -->
                 <input type="text" th:field="*{name}"/>
-                <span th:text="${#fields.hasErrors('name')}">XXX</span>
                 <span class="validationError"
                       th:if="${#fields.hasErrors('name')}"
                       th:errors="*{name}">Name Error

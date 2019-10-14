@@ -11,7 +11,7 @@ import java.util.List;
 
 @Component
 public class IngredientsInitializer {
-    private final static List<Ingredient> ingredients;
+    private static final List<Ingredient> ingredients;
     private static boolean initialized = false;
     private IngredientRepository ingredientRepo;
 

@@ -1,12 +1,14 @@
-package veinthrough.spring.tacocloud.data.model.converter;
+package veinthrough.spring.tacocloud.util;
 
-import veinthrough.spring.tacocloud.util.Identifiable;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ListsToMap {
     public static <T extends Identifiable<T>> Map<?, List<T>> toIdentifiedMap(List<T> list) {
         return list.stream()
@@ -14,7 +16,7 @@ public class ListsToMap {
     }
 
     public static <T, K> Map<K, List<T>> toMap(List<T> list,
-                                                Function<? super T, ? extends K> identifier) {
+                                               Function<? super T, ? extends K> identifier) {
         return list.stream()
                 .collect(Collectors.groupingBy(identifier));
     }

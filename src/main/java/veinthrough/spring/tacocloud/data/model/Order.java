@@ -1,7 +1,8 @@
 package veinthrough.spring.tacocloud.data.model;
 
-import com.google.common.collect.ImmutableMap;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import veinthrough.spring.tacocloud.util.Identifiable;
 
 import javax.persistence.*;
@@ -11,7 +12,6 @@ import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Data
 @Entity
@@ -22,6 +22,9 @@ public class Order implements Identifiable<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @ManyToOne
+    private User user;
 
     @ManyToMany(targetEntity = Taco.class)
     private List<Taco> tacos = new ArrayList<>();
@@ -55,6 +58,18 @@ public class Order implements Identifiable<Long> {
 
     private Date placedAt;
 
+    public Order(@NotBlank(message = "Name is required.") String name,
+                 @NotBlank(message = "Street is required.") String street,
+                 @NotBlank(message = "City is required.") String city,
+                 @NotBlank(message = "State is required.") String state,
+                 @NotBlank(message = "Zip code is required.") String zip) {
+        this.name = name;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+    }
+
     public void addDesign(Taco taco) {
         tacos.add(taco);
     }
@@ -67,20 +82,5 @@ public class Order implements Identifiable<Long> {
     @Override
     public Long getIdentifier() {
         return getId();
-    }
-
-    public Map<String, Object> detailsMap() {
-        return ImmutableMap.<String, Object>builder()
-                .put("id", getId())
-                .put("deliveryName", getName())
-                .put("deliveryStreet", getStreet())
-                .put("deliveryCity", getCity())
-                .put("deliveryState", getState())
-                .put("deliveryZip", getZip())
-                .put("ccNumber", getCcNumber())
-                .put("ccExpiration", getCcExpiration())
-                .put("ccCVV", getCcCVV())
-                .put("placedAt", getPlacedAt())
-                .build();
     }
 }
