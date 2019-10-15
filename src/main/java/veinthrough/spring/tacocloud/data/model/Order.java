@@ -1,6 +1,6 @@
 package veinthrough.spring.tacocloud.data.model;
 
-import lombok.Builder;
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import veinthrough.spring.tacocloud.util.Identifiable;
@@ -15,6 +15,7 @@ import java.util.List;
 
 @Data
 @Entity
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 @Table(name = "Taco_Order")
 public class Order implements Identifiable<Long> {
     private static final long serialVersionUID = 1L;

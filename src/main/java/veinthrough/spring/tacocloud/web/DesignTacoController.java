@@ -10,7 +10,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import veinthrough.spring.tacocloud.MethodLog;
 import veinthrough.spring.tacocloud.data.IngredientRepository;
-import veinthrough.spring.tacocloud.data.IngredientsInitializer;
 import veinthrough.spring.tacocloud.data.TacoRepository;
 import veinthrough.spring.tacocloud.data.model.Order;
 import veinthrough.spring.tacocloud.data.model.Taco;
@@ -30,11 +29,9 @@ public class DesignTacoController {
 
     @Autowired
     public DesignTacoController(IngredientRepository ingredientRepo,
-                                TacoRepository designRepo,
-                                IngredientsInitializer ingredientsInit) {
+                                TacoRepository designRepo) {
         this.ingredientRepo = ingredientRepo;
         this.designRepo = designRepo;
-        ingredientsInit.initialize();
     }
 
     @ModelAttribute(name = "order")
@@ -80,6 +77,7 @@ public class DesignTacoController {
                     "model", model.toString()));
             return VIEW_DESIGN;
         }
+
         Taco saved = designRepo.save(design);
         order.addDesign(saved);
 
