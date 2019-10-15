@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-
     <head>
-        <meta charset="UTF-8">
         <title>Taco Cloud</title>
     </head>
 
     <body>
         <h1>Welcome to...</h1>
         <img th:src="@{/images/TacoCloud.png}"/>
+
+        <div th:with="condition=!${authenticated}">
+            <!-- login can handle get-request by href -->
+            <p th:if="${condition}">Click<a th:href="@{/login}"> here </a> to login.</p>
+            <!-- logout can only handle post-request by form, otherwise will get 404-->
+            <form th:unless="${condition}" method="POST" th:action="@{/logout}" id="logoutForm">
+                <input type="submit" value="Logout"/>
+            </form>
+        </div>
+
+        <p><a th:href="@{/design}" id="design">Design a taco</a></p>
+
+        <p><a th:href="@{/discount}" id="discount">View discount codes</a></p>
     </body>
 </html>

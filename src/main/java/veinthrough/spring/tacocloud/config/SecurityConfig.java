@@ -1,4 +1,4 @@
-package veinthrough.spring.tacocloud.security;
+package veinthrough.spring.tacocloud.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/design", "/orders")
+                .antMatchers("/design", "/orders", "/discount")
                     .access("hasRole('ROLE_USER')")
                 .antMatchers("/", "/**")
                     .permitAll()
@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //logout
                 .and()
                     .logout()
+                        .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
 
                 //Make H2-Console non-secured; for debug purposes
