@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
-import veinthrough.spring.tacocloud.MethodLog;
+import veinthrough.spring.tacocloud.util.MethodLog;
 import veinthrough.spring.tacocloud.data.OrderRepository;
 import veinthrough.spring.tacocloud.data.model.Order;
 import veinthrough.spring.tacocloud.data.model.User;

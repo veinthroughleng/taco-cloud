@@ -1,5 +1,9 @@
-package veinthrough.spring.tacocloud;
+package veinthrough.spring.tacocloud.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MethodLog {
     public static String inLog(String method) {
         return getMethodString(method) + getPositionString(METHOD_POSITION.IN);

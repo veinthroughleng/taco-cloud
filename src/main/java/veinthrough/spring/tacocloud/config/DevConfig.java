@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import veinthrough.spring.tacocloud.MethodLog;
+import veinthrough.spring.tacocloud.util.MethodLog;
 import veinthrough.spring.tacocloud.data.IngredientRepository;
 import veinthrough.spring.tacocloud.data.UserRepository;
 import veinthrough.spring.tacocloud.data.model.Ingredient;

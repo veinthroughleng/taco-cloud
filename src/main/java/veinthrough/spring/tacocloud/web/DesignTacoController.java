@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import veinthrough.spring.tacocloud.MethodLog;
+import veinthrough.spring.tacocloud.util.MethodLog;
 import veinthrough.spring.tacocloud.data.IngredientRepository;
 import veinthrough.spring.tacocloud.data.TacoRepository;
 import veinthrough.spring.tacocloud.data.model.Order;
