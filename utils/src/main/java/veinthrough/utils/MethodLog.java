@@ -5,44 +5,45 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MethodLog {
+    private static final String DELIM = "\n    ";
+
     public static String inLog(String method) {
-        return getMethodString(method) + getPositionString(METHOD_POSITION.IN);
+        return getPositionString(METHOD_POSITION.IN) + getMethodString(method);
     }
 
     public static String inLog(String method, String... vars) {
-        return inLog(method) + getVarsString(vars);
+        return inLog(method) + DELIM
+                + getVarsString(vars);
     }
 
 
     public static String midLog(String method, String message, int step) {
-        return getMethodString(method)
-                + getPositionString(METHOD_POSITION.MID)
-                + message
-                + getStepString(step);
+        return getPositionString(METHOD_POSITION.MID) + getMethodString(method) + getStepString(step) + DELIM
+                + getMessageString(message);
     }
 
     public static String midLog(String method, int step, String... vars) {
-        return getMethodString(method)
-                + getPositionString(METHOD_POSITION.MID)
-                + getStepString(step)
+        return getPositionString(METHOD_POSITION.MID) + getMethodString(method) + getStepString(step) + DELIM
                 + getVarsString(vars);
     }
 
     public static String midLog(String method, String message, int step, String... vars) {
-        return midLog(method, message, step) + getVarsString(vars);
+        return midLog(method, message, step) + DELIM
+                + getVarsString(vars);
     }
 
 
     public static String outLog(String method) {
-        return getMethodString(method) + getPositionString(METHOD_POSITION.OUT);
+        return getPositionString(METHOD_POSITION.OUT) + getMethodString(method);
     }
 
     public static String outLog(String method, String... vars) {
-        return outLog(method) + getVarsString(vars);
+        return outLog(method) + DELIM
+                + getVarsString(vars);
     }
 
     private static String getMethodString(String method) {
-        return "---" + method + "()";
+        return method + "()";
     }
 
     private static String getPositionString(METHOD_POSITION position) {
@@ -53,9 +54,13 @@ public class MethodLog {
         return String.format("[%2d]", step);
     }
 
+    private static String getMessageString(String message) {
+        return "Message: " + message;
+    }
+
     private static String getVarsString(String... vars) {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");
+        sb.append("Variables: {");
         int length = vars.length;
         for (int i = 0; i < length; i += 2) {
             sb.append(vars[i]).append(":");

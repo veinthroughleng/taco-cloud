@@ -111,9 +111,13 @@
         <module>taco-cloud-model</module>
         <module>taco-cloud-data</module>
         <module>taco-cloud-security</module>
-        <module>taco-cloud-web</module>
+        <module>taco-cloud-web-mpa</module>
+        <module>taco-cloud-web-spa</module>
         <module>taco-cloud-app</module>
         <module>taco-cloud-artifacts</module>
+        <module>taco-cloud-rest</module>
+        <module>taco-cloud-property</module>
+        <module>taco-cloud-web-spa</module>
     </modules>
 
 

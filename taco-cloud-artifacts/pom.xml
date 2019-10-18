@@ -28,6 +28,11 @@
             </dependency>
             <dependency>
                 <groupId>veinthrough</groupId>
+                <artifactId>taco-cloud-property</artifactId>
+                <version>${tacocloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
                 <artifactId>taco-cloud-data</artifactId>
                 <version>${tacocloud.version}</version>
             </dependency>
@@ -38,7 +43,17 @@
             </dependency>
             <dependency>
                 <groupId>veinthrough</groupId>
-                <artifactId>taco-cloud-web</artifactId>
+                <artifactId>taco-cloud-web-mpa</artifactId>
+                <version>${tacocloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-cloud-web-spa</artifactId>
+                <version>${tacocloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-cloud-rest</artifactId>
                 <version>${tacocloud.version}</version>
             </dependency>
         </dependencies>

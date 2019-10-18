@@ -28,11 +28,18 @@
         <dependency>
             <groupId>veinthrough</groupId>
             <artifactId>taco-cloud-security</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!-- dependency>
+            <groupId>veinthrough</groupId>
+            <artifactId>taco-cloud-web-mpa</artifactId>
+        </dependency -->
+        <!-- dependency>
+            <groupId>veinthrough</groupId>
+            <artifactId>taco-cloud-web-spa</artifactId>
+        </dependency -->
         <dependency>
             <groupId>veinthrough</groupId>
-            <artifactId>taco-cloud-web</artifactId>
+            <artifactId>taco-cloud-rest</artifactId>
         </dependency>
 
         <!-- spring boot-->

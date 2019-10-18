@@ -1,6 +1,7 @@
 package veinthrough.tacocloud.model;
 
-import lombok.Data;
+import lombok.*;
+import org.springframework.data.rest.core.annotation.RestResource;
 import veinthrough.utils.Identifiable;
 
 import javax.persistence.*;
@@ -11,6 +12,8 @@ import java.util.List;
 
 @Data
 @Entity
+@NoArgsConstructor
+@RestResource(rel="tacos", path="tacos")
 public class Taco implements Identifiable<Long> {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -26,6 +29,15 @@ public class Taco implements Identifiable<Long> {
     private String name;
 
     private Date createdAt;
+
+    @Builder
+    public Taco(@NotNull @Size(min = 1, message = "You must choose at least 1 ingredient.")
+                        List<Ingredient> ingredients,
+                @NotNull @Size(min = 5, message = "Name must be at least 5 characters long.")
+                        String name) {
+        this.ingredients = ingredients;
+        this.name = name;
+    }
 
     @PrePersist
     void createdAt() {

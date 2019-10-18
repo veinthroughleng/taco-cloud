@@ -37,6 +37,8 @@ public class User implements UserDetails {
     private boolean credentialsNonExpired = true;
     private boolean enabled = true;
 
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Lists.newArrayList(

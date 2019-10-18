@@ -9,10 +9,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import veinthrough.tacocloud.data.IngredientRepository;
+import veinthrough.tacocloud.data.TacoRepository;
 import veinthrough.tacocloud.data.UserRepository;
-import veinthrough.tacocloud.model.Ingredient;
+import veinthrough.tacocloud.model.Taco;
 import veinthrough.tacocloud.model.User;
 import veinthrough.utils.MethodLog;
+import static veinthrough.tacocloud.Ingredients.*;
 
 @Profile("dev")
 @Configuration
@@ -21,28 +23,36 @@ public class DevConfig {
     @Bean
     public CommandLineRunner dataLoader(@Autowired IngredientRepository ingredientRepo,
                                         @Autowired UserRepository userRepo,
+                                        @Autowired TacoRepository tacoRepo,
                                         @Autowired PasswordEncoder encoder) {
         //[DEBUG]
         log.info(MethodLog.inLog("DevConfig.dataLoader"));
 
         return args ->
-            {
-                ingredientRepo.saveAll(
-                        Lists.newArrayList(
-                                new Ingredient("FLTO", "Flour Tortilla", Ingredient.INGREDIENT_TYPE.WRAP),
-                                new Ingredient("COTO", "Corn Tortilla", Ingredient.INGREDIENT_TYPE.WRAP),
-                                new Ingredient("GRBF", "Ground Beef", Ingredient.INGREDIENT_TYPE.PROTEIN),
-                                new Ingredient("CARN", "Carnitas", Ingredient.INGREDIENT_TYPE.PROTEIN),
-                                new Ingredient("TMTO", "Diced Tomatoes", Ingredient.INGREDIENT_TYPE.VEGGIES),
-                                new Ingredient("LETC", "Lettuce", Ingredient.INGREDIENT_TYPE.VEGGIES),
-                                new Ingredient("CHED", "Cheddar", Ingredient.INGREDIENT_TYPE.CHEESE),
-                                new Ingredient("JACK", "Monterrey Jack", Ingredient.INGREDIENT_TYPE.CHEESE),
-                                new Ingredient("SLSA", "Salsa", Ingredient.INGREDIENT_TYPE.SAUCE),
-                                new Ingredient("SRCR", "Sour Cream", Ingredient.INGREDIENT_TYPE.SAUCE)));
+        {
+            ingredientRepo.saveAll(
+                    Lists.newArrayList(
+                            FLTO, COTO, GRBF, CARN, TMTO, LETC, CHED, JACK, SLSA, SRCR));
 
-                userRepo.save(new User("veinthrough", encoder.encode("123456"),
-                        "Craig Walls", "123 North Street", "Cross Roads", "TX",
-                        "76227", "123-123-1234"));
-            };
+            userRepo.save(new User("veinthrough", encoder.encode("123456"),
+                    "Craig Walls", "123 North Street", "Cross Roads", "TX",
+                    "76227", "123-123-1234"));
+
+            tacoRepo.saveAll(
+                    Lists.newArrayList(
+                            Taco.builder().name("Carnivore")
+                                    .ingredients(Lists.newArrayList(
+                                            FLTO, GRBF, CARN, SRCR, SLSA, CHED))
+                                    .build(),
+                            Taco.builder().name("Bovine Bounty")
+                                    .ingredients(Lists.newArrayList(
+                                            CARN, GRBF, CHED, JACK, SRCR))
+                                    .build(),
+                            Taco.builder().name("Veg-Out")
+                                    .ingredients(Lists.newArrayList(
+                                            FLTO, CARN, TMTO, LETC, SLSA))
+                                    .build())
+            );
+        };
     }
 }

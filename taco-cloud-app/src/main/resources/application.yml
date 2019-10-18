@@ -1,6 +1,8 @@
 taco:
   orders:
     pageSize: 10
+  tacos:
+    recentSize: 10
 
   discount:
     codes:
@@ -10,6 +12,9 @@ taco:
 spring:
   profiles:
     active: dev
+  data:
+    rest:
+      base-path: /rest
 
 
 

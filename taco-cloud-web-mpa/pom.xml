@@ -10,9 +10,9 @@
         <relativePath>../</relativePath>
     </parent>
 
-    <artifactId>taco-cloud-web</artifactId>
+    <artifactId>taco-cloud-web-mpa</artifactId>
     <packaging>jar</packaging>
-    <description>web for project</description>
+    <description>mpa web for project</description>
 
     <dependencies>
         <!-- taco cloud -->
@@ -23,6 +23,10 @@
         <dependency>
             <groupId>veinthrough</groupId>
             <artifactId>taco-cloud-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>veinthrough</groupId>
+            <artifactId>taco-cloud-property</artifactId>
         </dependency>
         <dependency>
             <groupId>veinthrough</groupId>
@@ -41,13 +45,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <!-- spring boot configuration -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>

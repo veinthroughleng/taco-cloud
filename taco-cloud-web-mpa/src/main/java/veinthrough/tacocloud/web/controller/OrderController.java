@@ -13,7 +13,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import veinthrough.tacocloud.data.OrderRepository;
 import veinthrough.tacocloud.model.Order;
 import veinthrough.tacocloud.model.User;
-import veinthrough.tacocloud.web.properties.OrderProps;
+import veinthrough.tacocloud.property.OrderProps;
 import veinthrough.utils.MethodLog;
 
 import javax.validation.Valid;

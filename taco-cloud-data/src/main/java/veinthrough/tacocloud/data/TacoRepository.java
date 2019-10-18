@@ -1,8 +1,8 @@
 package veinthrough.tacocloud.data;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import veinthrough.tacocloud.model.Taco;
 
 public interface TacoRepository
-        extends CrudRepository<Taco, Long> {
+        extends PagingAndSortingRepository<Taco, Long> {
 }
