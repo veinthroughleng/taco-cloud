@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 //JPA requires that entities have a no-arguments  constructor
-public class Ingredient implements Identifiable<String> {
+public class Ingredient {
     @Id
     private final String id;
     private final String name;
@@ -23,11 +23,6 @@ public class Ingredient implements Identifiable<String> {
             return getType().toString().toLowerCase();
         }
         return getType().toString();
-    }
-
-    @Override
-    public String getIdentifier() {
-        return getId();
     }
 
     public enum INGREDIENT_TYPE {

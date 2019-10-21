@@ -47,6 +47,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         //By default, a successful login will take the user directly to previous accessed page
                         //.defaultSuccessUrl("/design", true)
 
+                .and()
+                    .httpBasic()
+                        .realmName("Taco Cloud")
+
                 //logout
                 .and()
                     .logout()
@@ -56,7 +60,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //Make H2-Console non-secured; for debug purposes
                 .and()
                     .csrf()
-                        .ignoringAntMatchers("/h2-console/**")
+                        .ignoringAntMatchers("/h2-console/**", "/ingredients/**", "/design", "/orders/**",
+                                "/rest/tacos", "/rest/orders")
 
                 //Allow pages to be loaded in frames from the same origin; needed for H2-Console
                 .and()

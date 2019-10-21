@@ -55,6 +55,8 @@ public class OrderController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Order postOrder(@RequestBody Order order) {
+        log.info(MethodLog.inLog("postOrder",
+                "order", order.toString()));
         return orderRepo.save(order);
     }
 

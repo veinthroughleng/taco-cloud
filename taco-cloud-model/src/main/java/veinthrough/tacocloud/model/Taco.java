@@ -2,8 +2,6 @@ package veinthrough.tacocloud.model;
 
 import lombok.*;
 import org.springframework.data.rest.core.annotation.RestResource;
-import veinthrough.utils.Identifiable;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,7 +12,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @RestResource(rel="tacos", path="tacos")
-public class Taco implements Identifiable<Long> {
+public class Taco{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
@@ -42,10 +40,5 @@ public class Taco implements Identifiable<Long> {
     @PrePersist
     void createdAt() {
         this.createdAt = new Date();
-    }
-
-    @Override
-    public Long getIdentifier() {
-        return getId();
     }
 }

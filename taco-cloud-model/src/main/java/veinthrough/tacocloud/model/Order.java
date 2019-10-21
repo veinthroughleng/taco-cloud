@@ -3,7 +3,6 @@ package veinthrough.tacocloud.model;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import veinthrough.utils.Identifiable;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
@@ -17,7 +16,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 @Table(name = "Taco_Order")
-public class Order implements Identifiable<Long> {
+public class Order{
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -78,10 +77,5 @@ public class Order implements Identifiable<Long> {
     @PrePersist
     void placedAt() {
         this.placedAt = new Date();
-    }
-
-    @Override
-    public Long getIdentifier() {
-        return getId();
     }
 }

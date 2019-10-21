@@ -33,10 +33,10 @@
             <groupId>veinthrough</groupId>
             <artifactId>taco-cloud-web-mpa</artifactId>
         </dependency -->
-        <!-- dependency>
+        <dependency>
             <groupId>veinthrough</groupId>
             <artifactId>taco-cloud-web-spa</artifactId>
-        </dependency -->
+        </dependency>
         <dependency>
             <groupId>veinthrough</groupId>
             <artifactId>taco-cloud-rest</artifactId>
