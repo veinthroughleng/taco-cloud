@@ -56,6 +56,16 @@
                 <artifactId>taco-cloud-rest</artifactId>
                 <version>${tacocloud.version}</version>
             </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-cloud-messaging</artifactId>
+                <version>${tacocloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-cloud-messaging-rabbit</artifactId>
+                <version>${tacocloud.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

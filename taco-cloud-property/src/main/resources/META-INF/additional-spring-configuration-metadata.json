@@ -1,0 +1,34 @@
+{
+  "properties": [
+    {
+      "name": "taco.discount.codes",
+      "type": "java.util.Map<java.lang.String, java.lang.Float>",
+      "description": "A map of discount codes to a discount percentage."
+    },
+    {
+      "name": "taco.page-sizes",
+      "type": "java.util.Map<java.lang.String, java.lang.Integer>",
+      "description": "A map of different page size to display different objects."
+    },
+    {
+      "name": "taco.message.queues",
+      "type": "java.util.Map<java.lang.String, java.lang.String>",
+      "description": "A map of different messaging queue in jms/artemis."
+    },
+    {
+      "name": "taco.message.routing-keys",
+      "type": "java.util.Map<java.lang.String, java.lang.String>",
+      "description": "A map of different routing key in rabbit-mp."
+    },
+    {
+      "name": "taco.message.topics",
+      "type": "java.util.Map<java.lang.String, java.lang.String>",
+      "description": "A map of different topics in kafka."
+    },
+    {
+      "name": "taco.message.sources",
+      "type": "java.util.Map<java.lang.String, java.lang.String>",
+      "description": "A map of different Source of message."
+    }
+  ]
+}

@@ -1,21 +1,7 @@
-taco:
-  orders:
-    pageSize: 10
-  tacos:
-    recentSize: 10
-
-  discount:
-    codes:
-      discount-1: 10
-      discount-2: 20
-
 spring:
   profiles:
-    active: dev
-  data:
-    rest:
-      base-path: /rest
-
+    active: dev, property, rest, rabbit, rabbit-sender
+    #active: dev, rabbit, rabbit-sender, rabbit-receiver
 
 
 ---
@@ -24,21 +10,26 @@ spring:
 
 logging:
   level:
-    veinthrough.tacocloud.web:
-      web: INFO
-      config: INFO
+    veinthrough.tacocloud:
+      mpa:
+        controller: INFO
+        config: INFO
+      rest: INFO
+      messaging: INFO
+
+server:
+  port: 8080
 
 
 
 ---
 spring:
   profiles: prod
-
   datasource:
     url: jdbc:mysql://localhost/tacocloud
     username: tacouser
     password: tacopassword
 
+
 logging:
-  level:
-    veinthrough.tacocloud.web: WARN
+  level: WARN

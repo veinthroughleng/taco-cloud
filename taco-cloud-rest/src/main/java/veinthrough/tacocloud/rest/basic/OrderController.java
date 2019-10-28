@@ -10,7 +10,7 @@ import veinthrough.tacocloud.data.OrderRepository;
 import veinthrough.tacocloud.data.UserRepository;
 import veinthrough.tacocloud.model.Order;
 import veinthrough.tacocloud.model.User;
-import veinthrough.tacocloud.property.OrderProps;
+import veinthrough.tacocloud.property.PageSizeProps;
 import veinthrough.utils.MethodLog;
 
 import static veinthrough.utils.Constants.JSON;
@@ -24,22 +24,22 @@ import static veinthrough.utils.Constants.PATH_ORDER;
 @Slf4j
 public class OrderController {
     private OrderRepository orderRepo;
-    private OrderProps orderProps;
+    private PageSizeProps pageSizeProps;
     private UserRepository userRepo;
 
     @Autowired
-    public OrderController(OrderRepository orderRepo, OrderProps orderProps, UserRepository userRepo) {
+    public OrderController(OrderRepository orderRepo, PageSizeProps pageSizeProps, UserRepository userRepo) {
         //[DEBUG]
         log.info(MethodLog.inLog("OrderController constructor",
-                "orderProps", orderProps.getPageSize().toString()));
+                "pageSizeProps.order", pageSizeProps.toString()));
         this.orderRepo = orderRepo;
-        this.orderProps = orderProps;
+        this.pageSizeProps = pageSizeProps;
         this.userRepo = userRepo;
     }
 
     @GetMapping("/user/{userId}")
     public Iterable<Order> ordersOfUser(@PathVariable("userId") Long userId) {
-        Pageable pageable = PageRequest.of(0, orderProps.getPageSize());
+        Pageable pageable = PageRequest.of(0, pageSizeProps.getPageSizes().get("order"));
         User user = userRepo.findById(userId).orElse(null);
         return user == null ? null :
                 orderRepo.findByUserOrderByPlacedAtDesc(user, pageable);

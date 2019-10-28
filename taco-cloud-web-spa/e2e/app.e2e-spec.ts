@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('taco-cloud-web-spa App', () => {
+describe('taco-cloud-mpa-spa App', () => {
   let page: AppPage;
 
   beforeEach(() => {

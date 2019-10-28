@@ -25,7 +25,7 @@
         <lombok.version>1.18.10</lombok.version>
 
         <!-- front end -->
-        <node.version>10.16.3</node.version>
+        <node.version>v10.16.3</node.version>
         <npm.version>6.9.0</npm.version>
         <yarn.version>v0.24.6</yarn.version>
         <frontend-maven-plugin.version>1.4</frontend-maven-plugin.version>
@@ -123,7 +123,11 @@
         <module>taco-cloud-artifacts</module>
         <module>taco-cloud-rest</module>
         <module>taco-cloud-property</module>
-        <module>taco-cloud-web-spa</module>
+        <module>taco-cloud-messaging</module>
+        <module>taco-cloud-messaging-jms</module>
+        <module>taco-cloud-messaging-rabbit</module>
+        <module>taco-cloud-messaging-kafka</module>
+        <module>taco-cloud-kitchen</module>
     </modules>
 
 

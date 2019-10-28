@@ -7,38 +7,26 @@ import lombok.NoArgsConstructor;
 public class MethodLog {
     private static final String DELIM = "\n    ";
 
-    public static String inLog(String method) {
-        return getPositionString(METHOD_POSITION.IN) + getMethodString(method);
-    }
-
     public static String inLog(String method, String... vars) {
-        return inLog(method) + DELIM
+        return getPositionString(METHOD_POSITION.IN) + getMethodString(method) + DELIM
                 + getVarsString(vars);
     }
 
-
-    public static String midLog(String method, String message, int step) {
-        return getPositionString(METHOD_POSITION.MID) + getMethodString(method) + getStepString(step) + DELIM
-                + getMessageString(message);
-    }
-
     public static String midLog(String method, int step, String... vars) {
-        return getPositionString(METHOD_POSITION.MID) + getMethodString(method) + getStepString(step) + DELIM
+        return getPositionString(METHOD_POSITION.MID) + getMethodString(method)
+                + getStepString(step) + DELIM
                 + getVarsString(vars);
     }
 
     public static String midLog(String method, String message, int step, String... vars) {
-        return midLog(method, message, step) + DELIM
+        return getPositionString(METHOD_POSITION.MID) + getMethodString(method)
+                + getStepString(step) + getMessageString(message) + DELIM
                 + getVarsString(vars);
     }
 
 
-    public static String outLog(String method) {
-        return getPositionString(METHOD_POSITION.OUT) + getMethodString(method);
-    }
-
     public static String outLog(String method, String... vars) {
-        return outLog(method) + DELIM
+        return getPositionString(METHOD_POSITION.OUT) + getMethodString(method) + DELIM
                 + getVarsString(vars);
     }
 
@@ -51,7 +39,7 @@ public class MethodLog {
     }
 
     private static String getStepString(int step) {
-        return String.format("[%2d]", step);
+        return String.format("[STEP %2d]", step);
     }
 
     private static String getMessageString(String message) {
@@ -59,16 +47,20 @@ public class MethodLog {
     }
 
     private static String getVarsString(String... vars) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Variables: {");
         int length = vars.length;
-        for (int i = 0; i < length; i += 2) {
-            sb.append(vars[i]).append(":");
-            if (i + 1 < length) sb.append(vars[i + 1]);
-            if (i + 2 < length) sb.append(";");
+        if (length != 0) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Variables: {");
+            for (int i = 0; i < length; i += 2) {
+                sb.append(vars[i]).append(":");
+                if (i + 1 < length) sb.append(vars[i + 1]);
+                if (i + 2 < length) sb.append(";");
+            }
+            sb.append("}");
+            return sb.toString();
+        } else {
+            return "";
         }
-        sb.append("}");
-        return sb.toString();
     }
 
     public enum METHOD_POSITION {
