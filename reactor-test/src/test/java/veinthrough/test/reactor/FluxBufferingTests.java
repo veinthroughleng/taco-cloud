@@ -63,13 +63,10 @@ public class FluxBufferingTests {
 
         StepVerifier
                 .create(animalMapMono)
-                .expectNextMatches(map -> {
-                    return
-                            map.size() == 3 &&
-                                    map.get('a').equals("aardvark") &&
-                                    map.get('e').equals("eagle") &&
-                                    map.get('k').equals("kangaroo");
-                })
+                .expectNextMatches(map -> map.size() == 3 &&
+                        map.get('a').equals("aardvark") &&
+                        map.get('e').equals("eagle") &&
+                        map.get('k').equals("kangaroo"))
                 .verifyComplete();
     }
 

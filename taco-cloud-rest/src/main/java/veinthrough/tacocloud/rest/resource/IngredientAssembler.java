@@ -6,7 +6,7 @@ import veinthrough.tacocloud.model.Ingredient;
 public class IngredientAssembler extends
         ResourceAssemblerSupport<Ingredient, IngredientResource> {
 
-    public IngredientAssembler() {
+    IngredientAssembler() {
         super(IngredientController.class, IngredientResource.class);
     }
 

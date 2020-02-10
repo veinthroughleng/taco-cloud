@@ -17,12 +17,12 @@ import java.util.List;
 @Configuration
 public class RabbitListenerRegistrar implements RabbitListenerConfigurer {
     private RabbitListenerEndpointRegistrar registrar;
-    private MessagingPropertiesRetriever retriever;
+    private MessagingPropertiesRetriever properties;
     private MessageConverter converter;
 
     @Autowired
-    public void setRetriever(MessagingPropertiesRetriever retriever) {
-        this.retriever = retriever;
+    public void setProperties(MessagingPropertiesRetriever properties) {
+        this.properties = properties;
     }
 
     @Autowired
@@ -41,6 +41,7 @@ public class RabbitListenerRegistrar implements RabbitListenerConfigurer {
                 listener -> {
                     List<String> queues = listener.getQueues();
                     SimpleRabbitListenerEndpoint endpoint = new SimpleRabbitListenerEndpoint();
+                    //set type as id
                     endpoint.setId(listener.getType().getSimpleName());
                     endpoint.setQueueNames(queues.toArray(new String[0]));
                     endpoint.setMessageListener(listener);
@@ -52,7 +53,7 @@ public class RabbitListenerRegistrar implements RabbitListenerConfigurer {
     private List<RabbitListener<?>> getRabbitListeners() {
         return Lists.newArrayList(
                 new RabbitListener<>(
-                        Lists.newArrayList(retriever.getQueue(Order.class)),
+                        Lists.newArrayList(properties.getQueue(Order.class)),
                         Order.class,
                         converter)
         );

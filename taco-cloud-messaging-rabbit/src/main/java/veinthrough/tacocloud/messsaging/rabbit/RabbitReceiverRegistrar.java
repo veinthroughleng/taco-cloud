@@ -15,7 +15,7 @@ import veinthrough.utils.MethodLog;
 @Profile("rabbit-receiver")
 public class RabbitReceiverRegistrar {
     private RabbitTemplate rabbit;
-    private MessagingPropertiesRetriever retriever;
+    private MessagingPropertiesRetriever properties;
 
     @Autowired
     public void setRabbit(RabbitTemplate rabbit) {
@@ -23,8 +23,8 @@ public class RabbitReceiverRegistrar {
     }
 
     @Autowired
-    public void setRetriever(MessagingPropertiesRetriever retriever) {
-        this.retriever = retriever;
+    public void setProperties(MessagingPropertiesRetriever properties) {
+        this.properties = properties;
     }
 
     @Bean
@@ -33,6 +33,6 @@ public class RabbitReceiverRegistrar {
         //[DEBUG]
         log.info(MethodLog.inLog(Thread.currentThread().getStackTrace()[1].getMethodName()));
         return new RabbitReceiver<>(rabbit,
-                retriever.getRoutingKey(Order.class));
+                properties.getQueue(Order.class));
     }
 }

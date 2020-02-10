@@ -1,8 +1,3 @@
-
-spring:
-  profiles: property
-
-
 taco:
   page-sizes:
     order: 10

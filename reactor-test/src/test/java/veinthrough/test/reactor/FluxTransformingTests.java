@@ -104,7 +104,8 @@ public class FluxTransformingTests {
                         Mono.just(n)
                                 .map(p -> {
                                     String[] split = n.split("\\s");
-                                    return new Player(split[0], split[1]);})
+                                    return new Player(split[0], split[1]);
+                                })
                                 .subscribeOn(Schedulers.parallel()));
 
         List<Player> playerList = Lists.newArrayList(

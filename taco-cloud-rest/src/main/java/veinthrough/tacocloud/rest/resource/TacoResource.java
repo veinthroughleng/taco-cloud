@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Relation(value = "taco", collectionRelation = "tacos")
-public class TacoResource extends ResourceSupport {
+class TacoResource extends ResourceSupport {
     private static final IngredientAssembler
             ingredientAssembler = new IngredientAssembler();
     @Getter
@@ -22,7 +22,7 @@ public class TacoResource extends ResourceSupport {
     @Getter
     private final List<IngredientResource> ingredients;
 
-    public TacoResource(Taco taco) {
+    TacoResource(Taco taco) {
         this.name = taco.getName();
         this.createdAt = taco.getCreatedAt();
         this.ingredients =

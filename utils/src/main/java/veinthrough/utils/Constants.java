@@ -11,4 +11,6 @@ public class Constants {
     public static final String PATH_DESIGN = "design";
     public static final String PATH_ORDER = "orders";
     public static final String PATH_INGREDIENT = "ingredients";
+
+    public static final String DEFAULT_DIRECT_EXCHANGE = "amq.direct";
 }

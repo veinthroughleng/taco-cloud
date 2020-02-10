@@ -7,14 +7,14 @@ import veinthrough.tacocloud.model.Ingredient;
 import static veinthrough.tacocloud.model.Ingredient.INGREDIENT_TYPE;
 
 @Relation(value = "ingredient", collectionRelation = "ingredients")
-public class IngredientResource extends ResourceSupport {
+class IngredientResource extends ResourceSupport {
     @Getter
     private final String name;
 
     @Getter
     private final INGREDIENT_TYPE type;
 
-    public IngredientResource(Ingredient ingredient) {
+    IngredientResource(Ingredient ingredient) {
         this.name = ingredient.getName();
         this.type = ingredient.getType();
     }

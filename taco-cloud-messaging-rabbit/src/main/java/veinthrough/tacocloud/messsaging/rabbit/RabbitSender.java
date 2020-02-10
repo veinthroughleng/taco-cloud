@@ -5,6 +5,8 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import veinthrough.tacocloud.messsaging.MessageSender;
 import veinthrough.utils.MethodLog;
 
+import static veinthrough.utils.Constants.DEFAULT_DIRECT_EXCHANGE;
+
 @Slf4j
 public class RabbitSender<T> implements MessageSender<T> {
     private RabbitTemplate rabbit;
@@ -25,7 +27,7 @@ public class RabbitSender<T> implements MessageSender<T> {
     @Override
     public void sendObject(T object) {
         //routing key
-        rabbit.convertAndSend(routingKey, object,
+        rabbit.convertAndSend(DEFAULT_DIRECT_EXCHANGE, routingKey, object,
                 message -> {
                     message.getMessageProperties().setHeader(
                             "X_SOURCE", source);

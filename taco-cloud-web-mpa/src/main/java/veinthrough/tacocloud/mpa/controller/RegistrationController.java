@@ -1,4 +1,4 @@
-package veinthrough.tacocloud.security;
+package veinthrough.tacocloud.mpa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

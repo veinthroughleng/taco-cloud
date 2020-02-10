@@ -18,7 +18,7 @@ import static veinthrough.utils.Constants.PATH_DESIGN;
 @RequestMapping(path = PATH_DESIGN,
         produces = JSON,
         consumes = JSON)
-@CrossOrigin
+@CrossOrigin(origins="*")
 @Slf4j
 public class DesignTacoController {
     private TacoRepository tacoRepo;
@@ -47,7 +47,7 @@ public class DesignTacoController {
         final String METHOD = "postTaco";
         log.info(MethodLog.inLog(METHOD, "taco", taco.toString()));
 
-        //id is absent from ingredients of taco returned from ui
+        //id is absent in ingredients of taco returned from ui
         taco.setIngredients(
                 taco.getIngredients().stream()
                         .map(ingredient ->

@@ -41,10 +41,6 @@
             <groupId>veinthrough</groupId>
             <artifactId>taco-cloud-rest</artifactId>
         </dependency>
-        <dependency>
-            <groupId>veinthrough</groupId>
-            <artifactId>taco-cloud-messaging-rabbit</artifactId>
-        </dependency>
 
         <!-- spring boot-->
         <dependency>

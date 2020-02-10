@@ -1,5 +1,4 @@
 spring:
-  profiles: jms
   jms:
     template:
       default-destination: taco.queue.default

@@ -2,6 +2,7 @@ package veinthrough.tacocloud.messsaging.rabbit;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.core.ParameterizedTypeReference;
 import veinthrough.tacocloud.messsaging.MessageReceiver;
 import veinthrough.utils.MethodLog;
 
@@ -20,6 +21,7 @@ public class RabbitReceiver<T> implements MessageReceiver<T> {
 
     @Override
     public T receiveObject() {
-        return (T) rabbit.receiveAndConvert(routingKey);
+        return rabbit.receiveAndConvert(routingKey,
+                new ParameterizedTypeReference<T>() {});
     }
 }

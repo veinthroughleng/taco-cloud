@@ -1,4 +1,4 @@
-package veinthrough.tacocloud.repository;
+package veinthrough.tacocloud.data.event;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.rest.core.annotation.HandleAfterCreate;
@@ -12,7 +12,7 @@ import veinthrough.utils.MethodLog;
 public class OrderEventHandler {
     private MessageSender<Order> orderMessageSender;
 
-    public OrderEventHandler(MessageSender<Order> orderMessageSender) {
+    OrderEventHandler(MessageSender<Order> orderMessageSender) {
         this.orderMessageSender = orderMessageSender;
     }
 

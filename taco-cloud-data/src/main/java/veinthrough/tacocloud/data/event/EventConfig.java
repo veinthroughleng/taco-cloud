@@ -1,16 +1,17 @@
-package veinthrough.tacocloud.repository;
+package veinthrough.tacocloud.data.event;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import veinthrough.tacocloud.data.event.OrderEventHandler;
 import veinthrough.tacocloud.messsaging.MessageSender;
 import veinthrough.tacocloud.model.Order;
 import veinthrough.utils.MethodLog;
 
 @Configuration
 @Slf4j
-public class RepositoryConfig {
+public class EventConfig {
     private MessageSender<Order> orderMessageSender;
 
     @Autowired

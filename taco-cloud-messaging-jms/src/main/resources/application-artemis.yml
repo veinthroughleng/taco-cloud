@@ -1,5 +1,4 @@
 spring:
-  profiles: artemis
   artemis:
     host: localhost
     port: 61616

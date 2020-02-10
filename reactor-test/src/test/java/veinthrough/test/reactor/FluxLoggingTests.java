@@ -20,6 +20,7 @@ public class FluxLoggingTests {
 
     @Test
     @Ignore
+    //onSubscribe([Fuseable] FluxMapFuseable.MapFuseableSubscriber)
     public void logMapping() {
         Flux<String> beltColors = Flux.just(
                 "white", "yellow", "orange", "green", "purple", "blue")

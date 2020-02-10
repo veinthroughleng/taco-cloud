@@ -21,14 +21,12 @@ public class MessagingPropertiesRetriever {
     }
 
 
-
     public String getQueue(Class<?> clazz) {
         return getQueue(classToIdentifier(clazz));
     }
     private String getQueue(String identifier) {
         return messagingProps.getQueues().get(identifier);
     }
-
 
     public String getSource(Class<?> clazz) {
         return getSource(classToIdentifier(clazz));
@@ -40,7 +38,6 @@ public class MessagingPropertiesRetriever {
     public String getRoutingKey(Class<?> clazz) {
         return getRoutingKey(classToIdentifier(clazz));
     }
-
     private String getRoutingKey(String identifier) {
         return messagingProps.getRoutingKeys().get(identifier);
     }

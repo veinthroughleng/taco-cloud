@@ -12,4 +12,4 @@ import static veinthrough.utils.Constants.PATH_INGREDIENT;
         produces = JSON,
         consumes = JSON)
 @CrossOrigin(origins = "*")
-public class IngredientController {}
+class IngredientController {}
