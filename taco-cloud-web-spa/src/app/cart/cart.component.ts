@@ -42,8 +42,8 @@ export class CartComponent implements OnInit {
   onSubmit() {
     // this.model.tacos = this.cart.getItemsInCart();
     this.cart.getItemsInCart().forEach((cartItem: any) => {
-      //push url rather than taco
-      //this.model.tacos.push(cartItem.taco);
+      // push url rather than taco
+      // this.model.tacos.push(cartItem.taco);
       this.model.tacos.push(cartItem.taco._links.self.href);
     });
 

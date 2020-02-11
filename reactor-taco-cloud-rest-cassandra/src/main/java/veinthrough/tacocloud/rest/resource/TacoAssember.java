@@ -7,7 +7,7 @@ import veinthrough.tacocloud.rest.basic.DesignTacoController;
 public class TacoAssember
         extends ResourceAssemblerSupport<Taco, TacoResource> {
 
-    public TacoAssember() {
+    TacoAssember() {
         super(DesignTacoController.class, TacoResource.class);
     }
 
