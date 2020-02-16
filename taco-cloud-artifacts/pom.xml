@@ -66,6 +66,23 @@
                 <artifactId>taco-cloud-messaging-rabbit</artifactId>
                 <version>${tacocloud.version}</version>
             </dependency>
+
+            <!-- reactor -->
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>reactor-taco-cloud-model-cassandra</artifactId>
+                <version>${tacocloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>reactor-taco-cloud-data-cassandra</artifactId>
+                <version>${tacocloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>reactor-taco-cloud-rest-cassandra</artifactId>
+                <version>${tacocloud.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
