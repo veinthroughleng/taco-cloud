@@ -8,6 +8,9 @@ public class TacoAssembler
         extends ResourceAssemblerSupport<Taco, TacoResource> {
 
     TacoAssembler() {
+        // "self" : {
+        //          "href" : "http://localhost:8080/design/2"
+        //        }
         super(DesignTacoController.class, TacoResource.class);
     }
 
