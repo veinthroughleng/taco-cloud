@@ -72,21 +72,26 @@
                 <version>${taco.version}</version>
             </dependency>
 
-            <!-- reactor -->
+            <!-- reactive -->
             <dependency>
                 <groupId>veinthrough</groupId>
-                <artifactId>reactor-taco-cloud-model-cassandra</artifactId>
-                <version>${tacocloud.version}</version>
+                <artifactId>reactive-cassandra-taco-model</artifactId>
+                <version>${taco.version}</version>
             </dependency>
             <dependency>
                 <groupId>veinthrough</groupId>
-                <artifactId>reactor-taco-cloud-data-cassandra</artifactId>
-                <version>${tacocloud.version}</version>
+                <artifactId>reactive-cassandra-taco-data</artifactId>
+                <version>${taco.version}</version>
             </dependency>
             <dependency>
                 <groupId>veinthrough</groupId>
-                <artifactId>reactor-taco-cloud-rest-cassandra</artifactId>
-                <version>${tacocloud.version}</version>
+                <artifactId>reactive-cassandra-taco-rest</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>reactive-cassandra-taco-security</artifactId>
+                <version>${taco.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
