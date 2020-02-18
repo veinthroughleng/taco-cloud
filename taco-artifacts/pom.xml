@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>veinthrough</groupId>
+    <artifactId>taco-artifacts</artifactId>
+    <version>${taco.version}</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <taco.version>0.0.1-SNAPSHOT</taco.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>utils</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-model</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-property</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-data</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-security</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-web-mpa</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-web-spa</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-rest</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-messaging</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>taco-messaging-rabbit</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>service-ingredient</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

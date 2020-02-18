@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: dev, property, rest, rabbit, rabbit-sender
+    #active: dev, rabbit, rabbit-sender, rabbit-receiver
+
+
+---
+spring:
+  profiles: dev
+
+logging:
+  level:
+    veinthrough.tacocloud:
+      mpa:
+        controller: INFO
+        config: INFO
+      rest: INFO
+      messaging: INFO
+
+server:
+  port: 8080
+
+
+
+---
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://localhost/taco
+    username: tacouser
+    password: tacopassword
+
+
+logging:
+  level: WARN
