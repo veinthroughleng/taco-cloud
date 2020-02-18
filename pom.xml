@@ -13,13 +13,13 @@
     </parent>
 
     <groupId>veinthrough</groupId>
-    <artifactId>taco-cloud-parent</artifactId>
+    <artifactId>taco-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <tacocloud.version>${project.version}</tacocloud.version>
+        <taco.version>${project.version}</taco.version>
         <guava.version>27.0.1-jre</guava.version>
         <h2database.version>1.4.196</h2database.version>
         <lombok.version>1.18.10</lombok.version>
@@ -34,14 +34,17 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>3.0.0-M3</maven.surefire.plugin.version>
         <maven.jar.plugin.version>3.1.2</maven.jar.plugin.version>
+
+        <!-- spring cloud-->
+        <spring.cloud.version>Greenwich.SR3</spring.cloud.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>veinthrough</groupId>
-                <artifactId>taco-cloud-artifacts</artifactId>
-                <version>${tacocloud.version}</version>
+                <artifactId>taco-artifacts</artifactId>
+                <version>${taco.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -59,6 +62,13 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -114,21 +124,20 @@
 
     <modules>
         <module>utils</module>
-        <module>taco-cloud-model</module>
-        <module>taco-cloud-data</module>
-        <module>taco-cloud-security</module>
-        <module>taco-cloud-web-mpa</module>
-        <module>taco-cloud-web-spa</module>
-        <module>taco-cloud-app</module>
-        <module>taco-cloud-artifacts</module>
-        <module>taco-cloud-rest</module>
-        <module>taco-cloud-property</module>
-        <module>taco-cloud-messaging</module>
-        <module>taco-cloud-messaging-jms</module>
-        <module>taco-cloud-messaging-rabbit</module>
-        <module>taco-cloud-messaging-kafka</module>
-        <module>taco-cloud-kitchen</module>
-        <module>reactor-test</module>
+        <module>taco-model</module>
+        <module>taco-data</module>
+        <module>taco-security</module>
+        <module>taco-web-mpa</module>
+        <module>taco-web-spa</module>
+        <module>taco-app</module>
+        <module>taco-artifacts</module>
+        <module>taco-rest</module>
+        <module>taco-property</module>
+        <module>taco-messaging</module>
+        <module>taco-messaging-jms</module>
+        <module>taco-messaging-rabbit</module>
+        <module>taco-messaging-kafka</module>
+        <module>taco-kitchen</module>
     </modules>
 
 

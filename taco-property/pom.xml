@@ -6,17 +6,29 @@
         <artifactId>taco-parent</artifactId>
         <groupId>veinthrough</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>..</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>utils</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>taco-property</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- spring boot configuration -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
+
+
 </project>
