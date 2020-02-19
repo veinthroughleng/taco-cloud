@@ -21,9 +21,5 @@
             <groupId>veinthrough</groupId>
             <artifactId>taco-model</artifactId>
         </dependency>
-        <dependency>
-            <groupId>veinthrough</groupId>
-            <artifactId>taco-messaging-rabbit</artifactId>
-        </dependency>
     </dependencies>
 </project>

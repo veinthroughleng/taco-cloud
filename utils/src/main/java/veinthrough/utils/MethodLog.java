@@ -5,7 +5,11 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MethodLog {
-    private static final String DELIM = "\n    ";
+    private static final String VARIABLES_PRE = "Variables: {";
+    private static final String SPACE_PRE = "    ";
+    private static final String DELIM = "\n" + SPACE_PRE;
+    private static final String DELIM_NEXT_VARIABLE = DELIM +
+            String.format("%-" + VARIABLES_PRE.length() + "s", " ");
 
     public static String inLog(String method, String... vars) {
         return getPositionString(METHOD_POSITION.IN) + getMethodString(method) + DELIM
@@ -52,9 +56,9 @@ public class MethodLog {
             StringBuilder sb = new StringBuilder();
             sb.append("Variables: {");
             for (int i = 0; i < length; i += 2) {
-                sb.append(vars[i]).append(":");
+                sb.append(vars[i]).append(": ");
                 if (i + 1 < length) sb.append(vars[i + 1]);
-                if (i + 2 < length) sb.append(";");
+                if (i + 2 < length) sb.append(";" + DELIM_NEXT_VARIABLE);
             }
             sb.append("}");
             return sb.toString();

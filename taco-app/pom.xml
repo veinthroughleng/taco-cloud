@@ -29,6 +29,10 @@
             <groupId>veinthrough</groupId>
             <artifactId>taco-security</artifactId>
         </dependency>
+        <dependency>
+            <groupId>veinthrough</groupId>
+            <artifactId>taco-messaging-rabbit</artifactId>
+        </dependency>
         <!-- dependency>
             <groupId>veinthrough</groupId>
             <artifactId>taco-mpa-mpa</artifactId>
@@ -36,6 +40,13 @@
         <dependency>
             <groupId>veinthrough</groupId>
             <artifactId>taco-rest</artifactId>
+        </dependency>
+
+        <!-- database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- spring boot-->

@@ -1,4 +1,4 @@
-package veinthrough.taco.data.event;
+package veinthrough.taco.event;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -7,11 +7,11 @@
 
     <groupId>veinthrough</groupId>
     <artifactId>taco-artifacts</artifactId>
-    <version>${taco.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
-        <taco.version>0.0.1-SNAPSHOT</taco.version>
+        <taco.version>${project.version}</taco.version>
     </properties>
 
     <dependencyManagement>

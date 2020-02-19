@@ -18,19 +18,4 @@ public class TacoCloudApplication {
         SpringApplication.run(TacoCloudApplication.class, args);
     }
 
-
-    // To avoid 404s when using Angular HTML 5 routing
-    @Bean
-    ErrorViewResolver supportPathBasedLocationStrategyWithoutHashes() {
-        return new ErrorViewResolver() {
-            @Override
-            public ModelAndView resolveErrorView(
-                    HttpServletRequest request, HttpStatus status, Map<String, Object> model) {
-                return status == HttpStatus.NOT_FOUND
-                        ? new ModelAndView("index.html", Collections.emptyMap(), HttpStatus.OK)
-                        : null;
-            }
-        };
-    }
-
 }
