@@ -138,6 +138,8 @@
         <module>taco-messaging-rabbit</module>
         <module>taco-messaging-kafka</module>
         <module>taco-kitchen</module>
+        <module>service-registry</module>
+        <module>service-rest</module>
     </modules>
 
 

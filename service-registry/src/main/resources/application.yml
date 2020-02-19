@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: dev
+#    active: dev, rabbit, rabbit-sender, rabbit-receiver
+  application:
+    name: service-registry
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: eureka
+  server:
+    enable-self-preservation: false
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+#      defaultZone: http://${other.eureka.host}:${other.eureka.port}/eureka
+
+
+---
+spring:
+  profiles: dev
+
+logging:
+  level:
+    veinthrough.tacocloud.service.registry: INFO
+
+
+---
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://localhost/taco
+    username: tacouser
+    password: tacopassword
+
+logging:
+  level: WARN

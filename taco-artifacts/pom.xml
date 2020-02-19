@@ -66,6 +66,16 @@
                 <artifactId>taco-messaging-rabbit</artifactId>
                 <version>${taco.version}</version>
             </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>service-registry</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>service-rest</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

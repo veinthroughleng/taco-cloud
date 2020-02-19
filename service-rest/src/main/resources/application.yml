@@ -1,0 +1,39 @@
+spring:
+  profiles:
+    active: dev, property, rabbit, rabbit-sender
+  application:
+    name: service-ingredient
+  data:
+    rest:
+      base-path: /rest
+
+server:
+  port: 58955
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+#      defaultZone: http://${other.eureka.host}:${other.eureka.port}/eureka
+
+
+---
+spring:
+  profiles: dev
+
+logging:
+  level:
+    veinthrough.tacocloud.service.ingredient: INFO
+
+
+
+---
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://localhost/taco
+    username: tacouser
+    password: tacopassword
+
+logging:
+  level: WARN

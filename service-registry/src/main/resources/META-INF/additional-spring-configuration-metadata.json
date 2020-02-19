@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "other.eureka.host",
+      "type": "java.lang.String",
+      "description": "Description for other.eureka.host."
+    },
+    {
+      "name": "other.eureka.port",
+      "type": "java.lang.String",
+      "description": "Description for other.eureka.port."
+    }
+  ] }
