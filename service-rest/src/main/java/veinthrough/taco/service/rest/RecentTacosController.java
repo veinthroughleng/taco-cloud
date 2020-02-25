@@ -1,4 +1,4 @@
-package veinthrough.taco.service.rest.recent;
+package veinthrough.taco.service.rest;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import veinthrough.taco.data.TacoRepository;
 import veinthrough.taco.property.PageSizeProps;
+import veinthrough.taco.model.resource.TacoAssembler;
+import veinthrough.taco.model.resource.TacoResource;
 import veinthrough.utils.MethodLog;
 
 import java.util.List;
@@ -41,6 +43,8 @@ public class RecentTacosController {
     public ResponseEntity<Resources<TacoResource>> recentTacos() {
         PageRequest page = PageRequest.of(
                 0, pageSizeProps.getPageSizes().get("taco"), Sort.by("createdAt").descending());
+
+        // [DEBUG]
 
         List<TacoResource> tacos = tacoRepo.findAll(page).getContent().stream()
                 .map(tacoAssembler::toResource)

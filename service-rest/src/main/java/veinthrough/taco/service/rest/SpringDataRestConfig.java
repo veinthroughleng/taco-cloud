@@ -2,16 +2,20 @@ package veinthrough.taco.service.rest;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.PagedResources;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.ResourceProcessor;
 import org.springframework.hateoas.config.EnableEntityLinks;
+import veinthrough.taco.model.Ingredient;
+import veinthrough.taco.model.Order;
 import veinthrough.taco.model.Taco;
 
 @Configuration
 @EnableEntityLinks
-public class SpringDataRestConfig {
+public class SpringDataRestConfig extends RepositoryRestConfigurerAdapter {
 
     @SuppressWarnings("Convert2Lambda")
     @Bean
@@ -34,10 +38,10 @@ public class SpringDataRestConfig {
     // since the IDs are already contained within the self links in the response,
     // you don't need to expose them as properties of the object itself.
     // extends RepositoryRestConfigurerAdapter
-    /*
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-        config.exposeIdsFor(Ingredient.class);
+        config.exposeIdsFor(Ingredient.class)
+                .exposeIdsFor(Taco.class)
+                .exposeIdsFor(Order.class);
     }
-    */
 }

@@ -1,7 +1,7 @@
 spring:
   profiles:
-    active: dev, property, rest, rabbit, rabbit-sender
-    #active: dev, rabbit, rabbit-sender, rabbit-receiver
+    active: dev, property, message, rest, rabbit, rabbit-sender, security
+    #active: dev, property, message, rest, rabbit, rabbit-sender, rabbit-receiver, mpa, security
 
 
 ---

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service-rest</artifactId>
+    <artifactId>service-app</artifactId>
 
     <dependencies>
         <!-- taco cloud-->
@@ -27,12 +27,21 @@
         </dependency>
         <dependency>
             <groupId>veinthrough</groupId>
-            <artifactId>taco-security</artifactId>
+            <artifactId>taco-web-spa</artifactId>
         </dependency>
         <dependency>
             <groupId>veinthrough</groupId>
-            <artifactId>taco-messaging-rabbit</artifactId>
-        </dependency >
+            <artifactId>taco-property</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>veinthrough</groupId>
+            <artifactId>taco-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 
         <!-- database -->
         <dependency>
@@ -41,14 +50,14 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- spring boot-->
+        <!-- spring cloud-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-rest</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
         <!-- test -->
@@ -67,6 +76,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
 

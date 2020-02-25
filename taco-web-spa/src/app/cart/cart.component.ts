@@ -40,15 +40,18 @@ export class CartComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.model.tacos = this.cart.getItemsInCart();
     this.cart.getItemsInCart().forEach((cartItem: any) => {
-      // push url rather than taco
-      // this.model.tacos.push(cartItem.taco);
-      this.model.tacos.push(cartItem.taco._links.self.href);
-    });
+        // prototype version
+        this.model.tacos.push(cartItem.taco);
+
+        // href version
+        // push url rather than taco
+        // this.model.tacos.push(cartItem.taco._links.self.href);
+      }
+    );
 
     this.httpClient.post(
-      Constants.REST_URL_BASIS + 'orders', this.model)
+      Constants.REST_URL_ORDER, this.model)
       .subscribe(r => this.cart.emptyCart());
 
     // TODO: Do something after this...navigate to a thank you page or something

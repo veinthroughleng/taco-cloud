@@ -1,6 +1,7 @@
 package veinthrough.taco.data.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import veinthrough.taco.data.IngredientRepository;
@@ -8,6 +9,7 @@ import veinthrough.taco.model.Ingredient;
 import static veinthrough.taco.model.Ingredient.INGREDIENT_TYPE;
 
 @Component
+@Profile("rest")
 public class IngredientByNameAndTypeConverter {
 
     private IngredientRepository repository;

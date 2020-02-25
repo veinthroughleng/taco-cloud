@@ -1,6 +1,8 @@
-package veinthrough.taco.service.rest.recent;
+package veinthrough.taco.model.resource;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
 import veinthrough.taco.model.Taco;
@@ -11,7 +13,9 @@ import java.util.stream.Collectors;
 
 
 @Relation(value = "taco", collectionRelation = "tacos")
-class TacoResource extends ResourceSupport {
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+// rest requires that entities have a no-arguments  constructor
+public class TacoResource extends ResourceSupport {
     @Getter
     private final String name;
 

@@ -76,6 +76,11 @@
                 <artifactId>service-rest</artifactId>
                 <version>${taco.version}</version>
             </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>web-spa-service</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

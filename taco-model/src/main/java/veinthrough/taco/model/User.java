@@ -22,8 +22,9 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id; // non-final, used in convert href to prototype
 
+    // attributes
     private final String username;
     @NonNull private String password;
     private final String fullname;

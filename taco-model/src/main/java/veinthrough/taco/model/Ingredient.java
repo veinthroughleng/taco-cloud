@@ -9,13 +9,13 @@ import javax.persistence.Id;
 @Builder
 @AllArgsConstructor
 @Entity
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@NoArgsConstructor
 //JPA requires that entities have a no-arguments  constructor
-public class Ingredient {
+public class Ingredient{
     @Id
-    private final String id;
-    private final String name;
-    private final INGREDIENT_TYPE type;
+    private String id; // non-final, used in convert href to prototype
+    private String name;
+    private INGREDIENT_TYPE type;
 
     public String getTypeString(boolean lowerCase) {
         if (lowerCase) {

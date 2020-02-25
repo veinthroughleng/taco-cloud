@@ -1,15 +1,16 @@
 spring:
   profiles:
-    active: dev, property, message, rabbit, rabbit-sender, rest, security
+    active: dev, property, security
     #active: dev, property, message, rest, rabbit, rabbit-sender, rabbit-receiver, mpa, security
   application:
-    name: service-rest
+    name: service-app
   data:
     rest:
       base-path: /rest
 
+
 server:
-  port: 8081
+  port: 8080
 
 eureka:
   client:

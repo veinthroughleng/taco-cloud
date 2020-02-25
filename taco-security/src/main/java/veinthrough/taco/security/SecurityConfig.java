@@ -39,6 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.access("hasRole('ROLE_USER')")
                 .antMatchers(HttpMethod.PATCH, "/ingredients")
                     .permitAll()
+                .antMatchers(HttpMethod.POST, "/tacos", "order")
+                    .permitAll()
                 .antMatchers("/", "/**")
                     .permitAll()
 
@@ -53,17 +55,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .httpBasic()
                         .realmName("Taco Cloud")
 
-                //logout
+                // logout
                 .and()
                     .logout()
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
 
-                //Make H2-Console non-secured; for debug purposes
+                // csrf
+                // Make H2-Console non-secured; for debug purposes
                 .and()
                     .csrf()
                         .ignoringAntMatchers("/h2-console/**", "/ingredients/**", "/design", "/orders/**",
-                                "/rest/tacos", "/rest/orders")
+                                "/rest/tacos", "/rest/orders", "/tacos", "/orders")
 
                 //Allow pages to be loaded in frames from the same origin; needed for H2-Console
                 .and()

@@ -4,8 +4,8 @@ spring:
       name: veinthrough
       password: 123456
   profiles:
-    active: dev, property, rabbit, rabbit-listener
-    #active: dev, rabbit, rabbit-sender, rabbit-listener
+    active: dev, property, message, rabbit, rabbit-listener
+    #active: dev, property, message, rest, rabbit, rabbit-sender, rabbit-receiver, mpa, security
 
 
 ---

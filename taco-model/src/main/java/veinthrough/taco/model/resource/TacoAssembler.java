@@ -1,4 +1,4 @@
-package veinthrough.taco.service.rest.recent;
+package veinthrough.taco.model.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityLinks;

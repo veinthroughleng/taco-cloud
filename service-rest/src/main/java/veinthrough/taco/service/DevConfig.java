@@ -15,6 +15,8 @@ import veinthrough.taco.model.Taco;
 import veinthrough.taco.model.User;
 import veinthrough.utils.MethodLog;
 
+import java.util.Date;
+
 import static veinthrough.taco.service.Ingredients.*;
 
 @Profile("dev")
@@ -44,14 +46,17 @@ public class DevConfig {
                             Taco.builder().name("Carnivore")
                                     .ingredients(Lists.newArrayList(
                                             FLTO, GRBF, CARN, SRCR, SLSA, CHED))
+                                    .createdAt(new Date())
                                     .build(),
                             Taco.builder().name("Bovine Bounty")
                                     .ingredients(Lists.newArrayList(
                                             CARN, GRBF, CHED, JACK, SRCR))
+                                    .createdAt(new Date())
                                     .build(),
                             Taco.builder().name("Veg-Out")
                                     .ingredients(Lists.newArrayList(
                                             FLTO, CARN, TMTO, LETC, SLSA))
+                                    .createdAt(new Date())
                                     .build())
             );
         };

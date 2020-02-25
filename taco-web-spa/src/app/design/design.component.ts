@@ -30,16 +30,20 @@ export class DesignComponent implements OnInit {
 
   // tag::ngOnInit[]
   ngOnInit() {
-    this.httpClient.get(Constants.REST_URL_BASIS + 'ingredients')
+    this.httpClient.get(Constants.REST_URL_INGREDIENT)
       .subscribe((data: any) => {
-        this.allIngredients = data._embedded.ingredients;
-        this.allIngredients.forEach((ingredient: any) => {
-            //add id attribute
-            ingredient.id =
-              ingredient._links.self.href.split("/").reverse()[0];
-            //delete ingredient._links;
-          }
-        );
+        // prototype version
+        this.allIngredients = data;
+
+        // href version
+        // this.allIngredients = data._embedded.ingredients;
+        // this.allIngredients.forEach((ingredient: any) => {
+        //     //add id attribute
+        //     ingredient.id =
+        //       ingredient._links.self.href.split("/").reverse()[0];
+        //     //delete ingredient._links;
+        //   }
+        // );
         this.wraps = this.allIngredients.filter(w => w.type === 'WRAP');
         this.proteins = this.allIngredients.filter(p => p.type === 'PROTEIN');
         this.veggies = this.allIngredients.filter(v => v.type === 'VEGGIES');
@@ -63,12 +67,13 @@ export class DesignComponent implements OnInit {
   options = {headers: this.header};
 
   onSubmit() {
-    //map to every ingredient to href
-    this.model.ingredients =
-      this.model.ingredients.map(ingredient => ingredient._links.self.href);
+    // href version
+    // // map to every ingredient to href
+    // this.model.ingredients =
+    //   this.model.ingredients.map(ingredient => ingredient._links.self.href);
+
     this.httpClient.post(
-      Constants.REST_URL_BASIS + 'tacos',
-      this.model
+      Constants.REST_URL_TACO, this.model
     ).subscribe(taco => this.cart.addToCart(taco));
 
     this.router.navigate(['/cart']);
