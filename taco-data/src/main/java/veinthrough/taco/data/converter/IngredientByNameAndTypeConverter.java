@@ -9,7 +9,7 @@ import veinthrough.taco.model.Ingredient;
 import static veinthrough.taco.model.Ingredient.INGREDIENT_TYPE;
 
 @Component
-@Profile("rest")
+@Profile("jpa-rest")
 public class IngredientByNameAndTypeConverter {
 
     private IngredientRepository repository;

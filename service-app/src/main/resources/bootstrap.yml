@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dev, eureka, property, rest, security
+  #dev,prod,eureka,property,jpa-rest,rest,message,rabbit,rabbit-sender,rabbit-receiver,rabbit-listener,mpa,security
+  application:
+    name: service-app
+  cloud:
+    config:
+      uri: http://localhost:8083

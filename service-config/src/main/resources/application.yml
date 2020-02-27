@@ -1,0 +1,18 @@
+server:
+  port: 8083
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/veinthroughleng/taco-cloud-config.git
+          search-paths: application, profile
+#          default-label: master
+          username: veinthroughleng@gmail.com
+          password: l336415p
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka

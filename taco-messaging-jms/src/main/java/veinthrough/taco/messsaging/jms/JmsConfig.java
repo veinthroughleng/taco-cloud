@@ -11,10 +11,8 @@ import veinthrough.utils.MethodLog;
 
 @Configuration
 @Slf4j
-@Profile({"jms-sender", "jms-receiver", "jms-listener"})
 public class JmsConfig {
     @Bean
-    @Profile({"jms-sender", "jms-receiver", "jms-listener"})
     public MappingJackson2MessageConverter jmsMessageConverter() {
         //[DEBUG]
         log.info(MethodLog.inLog(Thread.currentThread().getStackTrace()[1].getMethodName()));

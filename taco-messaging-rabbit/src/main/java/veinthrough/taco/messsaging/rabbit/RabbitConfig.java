@@ -9,11 +9,9 @@ import veinthrough.utils.MethodLog;
 
 @Configuration
 @Slf4j
-@Profile({"rabbit-sender", "rabbit-receiver", "rabbit-listener"})
 public class RabbitConfig {
 
     @Bean
-    @Profile({"rabbit-sender", "rabbit-receiver", "rabbit-listener"})
     public Jackson2JsonMessageConverter rabbitMessageConverter() {
         //[DEBUG]
         log.info(MethodLog.inLog(Thread.currentThread().getStackTrace()[1].getMethodName()));

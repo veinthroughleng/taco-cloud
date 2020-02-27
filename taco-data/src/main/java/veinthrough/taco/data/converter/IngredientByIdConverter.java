@@ -9,7 +9,7 @@ import veinthrough.taco.data.IngredientRepository;
 import veinthrough.taco.model.Ingredient;
 
 @Component
-@Profile({"mpa", "rest"})
+@Profile({"mpa", "jpa-rest"})
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
     private IngredientRepository repository;

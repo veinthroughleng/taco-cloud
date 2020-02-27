@@ -2,12 +2,14 @@ package veinthrough.taco.rest.auto;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.hateoas.*;
 import org.springframework.hateoas.config.EnableEntityLinks;
 import veinthrough.taco.model.Taco;
 
 @Configuration
 @EnableEntityLinks
+@Profile("jpa-rest")
 public class SpringDataRestConfig {
 
     @SuppressWarnings("Convert2Lambda")

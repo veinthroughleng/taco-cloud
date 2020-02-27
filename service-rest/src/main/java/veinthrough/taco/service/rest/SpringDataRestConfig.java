@@ -2,6 +2,7 @@ package veinthrough.taco.service.rest;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 import org.springframework.hateoas.EntityLinks;
@@ -15,6 +16,7 @@ import veinthrough.taco.model.Taco;
 
 @Configuration
 @EnableEntityLinks
+@Profile("jpa-rest")
 public class SpringDataRestConfig extends RepositoryRestConfigurerAdapter {
 
     @SuppressWarnings("Convert2Lambda")

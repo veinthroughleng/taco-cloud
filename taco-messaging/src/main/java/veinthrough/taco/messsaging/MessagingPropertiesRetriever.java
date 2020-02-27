@@ -9,7 +9,6 @@ import veinthrough.utils.MethodLog;
 
 @Component
 @Slf4j
-@Profile("message")
 public class MessagingPropertiesRetriever {
     private MessagingProps messagingProps;
 

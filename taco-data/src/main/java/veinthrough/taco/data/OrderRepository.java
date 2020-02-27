@@ -8,7 +8,7 @@ import veinthrough.taco.model.User;
 
 import java.util.List;
 
-@Profile("rest")
+@Profile("jpa-rest")
 public interface OrderRepository
         extends CrudRepository<Order, Long> {
     List<Order> findByUserOrderByPlacedAtDesc(User user, Pageable pageable);
