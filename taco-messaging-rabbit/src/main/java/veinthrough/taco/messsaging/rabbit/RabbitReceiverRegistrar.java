@@ -31,7 +31,7 @@ public class RabbitReceiverRegistrar {
     @Profile("rabbit-receiver")
     public RabbitReceiver<Order> getRabbitReceiver() {
         //[DEBUG]
-        log.info(MethodLog.inLog(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        log.info(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName()));
         return new RabbitReceiver<>(rabbit,
                 properties.getQueue(Order.class));
     }

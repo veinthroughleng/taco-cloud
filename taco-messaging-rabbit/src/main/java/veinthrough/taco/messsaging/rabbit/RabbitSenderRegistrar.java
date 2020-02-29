@@ -31,7 +31,7 @@ public class RabbitSenderRegistrar {
     @Profile("rabbit-sender")
     public RabbitSender<Order> getRabbitSender() {
         //[DEBUG]
-        log.info(MethodLog.inLog(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        log.info(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName()));
         return new RabbitSender<>(rabbit,
                 properties.getRoutingKey(Order.class),
                 properties.getSource(Order.class));

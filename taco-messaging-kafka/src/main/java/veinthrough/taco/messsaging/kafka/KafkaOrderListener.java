@@ -23,7 +23,7 @@ public class KafkaOrderListener implements MessageListener<Integer, Order> {
     public void setRetriever() {
         this.topic = "#{taco.message.topic.order}";
         //[DEBUG]
-        log.info(MethodLog.inLog("constructor",
+        log.info(MethodLog.log("constructor",
                 "topic", topic));
     }
 
@@ -31,7 +31,7 @@ public class KafkaOrderListener implements MessageListener<Integer, Order> {
     @KafkaListener(topics = "#{taco.message.topic.order}")
     public void onMessage(ConsumerRecord<Integer, Order> record) {
         //[DEBUG]
-        log.info(MethodLog.inLog(Thread.currentThread().getStackTrace()[1].getMethodName(),
+        log.info(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "topic", record.topic(),
                 "key", record.key() == null ? null : String.valueOf(record.key()),
                 "partition", String.valueOf(record.partition()),

@@ -33,7 +33,7 @@ public class RecentTacosController {
     public RecentTacosController(TacoRepository tacoRepo, PageSizeProps pageSizeProps, TacoAssembler tacoAssembler) {
         this.tacoAssembler = tacoAssembler;
         //[DEBUG]
-        log.info(MethodLog.inLog("RecentTacosController constructor",
+        log.info(MethodLog.log("RecentTacosController constructor",
                 "pageSizeProps.taco", pageSizeProps.toString()));
         this.tacoRepo = tacoRepo;
         this.pageSizeProps = pageSizeProps;

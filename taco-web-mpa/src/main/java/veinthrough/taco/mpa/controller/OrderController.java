@@ -29,7 +29,7 @@ public class OrderController {
     @Autowired
     public OrderController(OrderRepository orderRepo, PageSizeProps pageSizeProps) {
         //[DEBUG]
-        log.info(MethodLog.inLog("OrderController constructor",
+        log.info(MethodLog.log("OrderController constructor",
                 "pageSizeProps.order", pageSizeProps.getPageSizes().get("order").toString()));
         this.orderRepo = orderRepo;
         this.pageSizeProps = pageSizeProps;
@@ -47,7 +47,7 @@ public class OrderController {
                                Model model) {
         //[DEBUG]
         final String METHOD = "processorOrder";
-        log.info(MethodLog.inLog(METHOD,
+        log.info(MethodLog.log(METHOD,
                 "order", order.toString(),
                 "errors", errors.toString(),
                 "model", model.toString()));
@@ -62,7 +62,7 @@ public class OrderController {
         sessionStatus.setComplete();
 
         //[DEBUG]
-        log.info(MethodLog.outLog(METHOD,
+        log.info(MethodLog.log(METHOD,
                 "order", order.toString(),
                 "errors", errors.toString(),
                 "model", model.toString()));

@@ -142,6 +142,7 @@
         <module>service-rest</module>
         <module>service-app</module>
         <module>service-config</module>
+        <module>service-turbine</module>
     </modules>
 
 

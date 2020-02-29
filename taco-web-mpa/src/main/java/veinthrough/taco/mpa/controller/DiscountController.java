@@ -18,7 +18,7 @@ public class DiscountController {
     @Autowired
     public DiscountController(DiscountProps discountProps) {
         //[DEBUG]
-        log.info(MethodLog.inLog("DiscountController constructor",
+        log.info(MethodLog.log("DiscountController constructor",
                 "discountCodes", discountProps.getCodes().toString()));
         this.discountProps = discountProps;
     }

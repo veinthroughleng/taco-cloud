@@ -18,7 +18,7 @@ public class OrderEventHandler {
 
     @HandleAfterCreate
     public void handleOrderCreated(Order order) {
-        log.info(MethodLog.inLog(
+        log.info(MethodLog.log(
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "order", order.toString()));
         orderMessageSender.sendObject(order);

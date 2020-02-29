@@ -1,9 +1,13 @@
 spring:
   profiles:
-    active: dev, eureka, property, rest, security
-  #dev,prod,eureka,property,jpa-rest,rest,message,rabbit,rabbit-sender,rabbit-receiver,rabbit-listener,mpa,security
+    active: dev, eureka, property, rest, security, feign-hystrix
+  #dev,prod,eureka,property,jpa-rest,rest,message,rabbit,rabbit-sender,rabbit-receiver,rabbit-listener,mpa,security,feign-hystrix
   application:
     name: service-app
   cloud:
     config:
       uri: http://localhost:8083
+feign:
+  hystrix:
+    # should enable manually, isn't automatically configured in latest versions
+    enabled: true

@@ -22,7 +22,7 @@ public class KafkaOrderSender implements MessageSender<Order> {
         this.kafkaTemplate = kafkaTemplate;
         this.topic = "#{taco.message.topic.order}";
         //[DEBUG]
-        log.info(MethodLog.inLog("constructor",
+        log.info(MethodLog.log("constructor",
                 "topic", topic));
     }
 

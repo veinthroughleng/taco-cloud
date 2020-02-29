@@ -29,7 +29,7 @@ public class RecentTacosController {
     @Autowired
     public RecentTacosController(TacoRepository tacoRepo, PageSizeProps pageSizeProps) {
         //[DEBUG]
-        log.info(MethodLog.inLog("RecentTacosController constructor",
+        log.info(MethodLog.log("RecentTacosController constructor",
                 "pageSizeProps.taco", pageSizeProps.toString()));
         this.tacoRepo = tacoRepo;
         this.pageSizeProps = pageSizeProps;

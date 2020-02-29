@@ -1,9 +1,9 @@
 spring:
   profiles:
-    active: dev
+    active: dev, eureka
   #dev,prod,eureka,property,jpa-rest,rest,message,rabbit,rabbit-sender,rabbit-receiver,rabbit-listener,mpa,security,feign-hystrix
   application:
-    name: service-registry
+    name: service-turbine
   cloud:
     config:
       uri: http://localhost:8083

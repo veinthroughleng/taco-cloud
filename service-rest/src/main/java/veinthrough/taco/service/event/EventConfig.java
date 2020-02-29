@@ -20,7 +20,7 @@ public class EventConfig {
 
     @Bean
     OrderEventHandler getOrderEventHandler() {
-        log.info(MethodLog.inLog(
+        log.info(MethodLog.log(
                 Thread.currentThread().getStackTrace()[1].getMethodName()));
         return new OrderEventHandler(orderMessageSender);
     }

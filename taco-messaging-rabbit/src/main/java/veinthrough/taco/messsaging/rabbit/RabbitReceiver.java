@@ -15,7 +15,7 @@ public class RabbitReceiver<T> implements MessageReceiver<T> {
         this.rabbit = rabbit;
         this.routingKey = routingKey;
         //[DEBUG]
-        log.info(MethodLog.outLog("constructor",
+        log.info(MethodLog.log("constructor",
                 "routing key", routingKey));
     }
 

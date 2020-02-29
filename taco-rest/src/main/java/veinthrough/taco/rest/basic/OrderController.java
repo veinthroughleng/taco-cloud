@@ -30,7 +30,7 @@ public class OrderController {
     @Autowired
     public OrderController(OrderRepository orderRepo, PageSizeProps pageSizeProps, UserRepository userRepo) {
         //[DEBUG]
-        log.info(MethodLog.inLog("OrderController constructor",
+        log.info(MethodLog.log("OrderController constructor",
                 "pageSizeProps.order", pageSizeProps.toString()));
         this.orderRepo = orderRepo;
         this.pageSizeProps = pageSizeProps;
@@ -48,14 +48,14 @@ public class OrderController {
     @GetMapping("/order/{id}")
     public Order orderById(@PathVariable("id") Long id) {
         //[DEBUG]
-        log.info(MethodLog.inLog("orderById"));
+        log.info(MethodLog.log("orderById"));
         return orderRepo.findById(id).orElse(null);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Order postOrder(@RequestBody Order order) {
-        log.info(MethodLog.inLog("postOrder",
+        log.info(MethodLog.log("postOrder",
                 "order", order.toString()));
         return orderRepo.save(order);
     }

@@ -35,7 +35,7 @@ public class DesignTacoController {
     @GetMapping("/{id}")
     public Taco tacoById(@PathVariable("id") Long id) {
         //[DEBUG]
-        log.info(MethodLog.inLog("DesignTacoController"));
+        log.info(MethodLog.log("DesignTacoController"));
         return tacoRepo.findById(id).orElse(null);
     }
 
@@ -45,7 +45,7 @@ public class DesignTacoController {
 
         //[DEBUG]
         final String METHOD = "postTaco";
-        log.info(MethodLog.inLog(METHOD, "taco", taco.toString()));
+        log.info(MethodLog.log(METHOD, "taco", taco.toString()));
 
         //id is absent in ingredients of taco returned from ui
         taco.setIngredients(
@@ -59,14 +59,14 @@ public class DesignTacoController {
                         .collect(Collectors.toList()));
 
         //[DEBUG]
-        log.info(MethodLog.midLog(
+        log.info(MethodLog.log(
                 "postTaco", "After assigned id", 0,
                 "taco", taco.toString()));
 
         Taco saved = tacoRepo.save(taco);
 
         //[DEBUG]
-        log.info(MethodLog.outLog(METHOD, "saved", taco.toString()));
+        log.info(MethodLog.log(METHOD, "saved", taco.toString()));
         return saved;
     }
 

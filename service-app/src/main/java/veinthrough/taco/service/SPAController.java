@@ -2,10 +2,8 @@ package veinthrough.taco.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import veinthrough.taco.model.Order;
 import veinthrough.taco.model.href.*;
 import veinthrough.taco.service.feign.RestClient;
 
@@ -28,6 +26,11 @@ public class SPAController {
         this.converter = new ResourceConverter(rest);
     }
 
+    @GetMapping(path = PATH_INGREDIENT + "/{id}")
+    public IngredientMix getIngredient(@PathVariable String id) {
+        return new IngredientMix(rest.getIngredient(id));
+    }
+
     @GetMapping(path = PATH_INGREDIENT)
     public List<IngredientMix> getAllIngredients() {
         return rest.getAllIngredients().getContent().stream()
@@ -41,7 +44,7 @@ public class SPAController {
         return converter.toTaco(rest.getTaco(id));
     }
 
-    @GetMapping(path = PATH_TACO + "/recent")
+    @GetMapping(path = PATH_TACO + PATH_RECENT)
     public Iterable<TacoMix> recentTacos() {
         return rest.recentTacos().getContent().stream()
                 .map(converter::toTaco)
@@ -66,12 +69,8 @@ public class SPAController {
     @PostMapping(path = PATH_ORDER)
     @ResponseStatus(HttpStatus.CREATED)
     public OrderMix postOrder(@RequestBody OrderMix order) {
-        OrderHref href = new OrderHref(order);
-        Resource<Order> result = rest.postOrder(href);
-        OrderMix mix = converter.toOrder(result);
-        return mix;
-//        return converter.toOrder(
-//                rest.postOrder(
-//                        new OrderHref(order)));
+        return converter.toOrder(
+                rest.postOrder(
+                        new OrderHref(order)));
     }
 }

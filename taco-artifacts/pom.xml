@@ -78,7 +78,17 @@
             </dependency>
             <dependency>
                 <groupId>veinthrough</groupId>
-                <artifactId>web-spa-service</artifactId>
+                <artifactId>service-app</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>service-config</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>service-turbine</artifactId>
                 <version>${taco.version}</version>
             </dependency>
         </dependencies>

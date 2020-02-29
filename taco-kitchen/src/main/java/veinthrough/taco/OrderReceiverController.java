@@ -22,7 +22,7 @@ public class OrderReceiverController {
     public void setReceiver(MessageReceiver<Order> receiver) {
         this.receiver = receiver;
         //[DEBUG]
-        log.info(MethodLog.inLog(
+        log.info(MethodLog.log(
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "receiver", receiver.toString()
         ));
@@ -32,7 +32,7 @@ public class OrderReceiverController {
     public String receiveOrder(Model model) {
         Order order = receiver.receiveObject();
         //[DEBUG]
-        log.info(MethodLog.midLog(
+        log.info(MethodLog.log(
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "Message received", 1,
                 "order", order.toString()));

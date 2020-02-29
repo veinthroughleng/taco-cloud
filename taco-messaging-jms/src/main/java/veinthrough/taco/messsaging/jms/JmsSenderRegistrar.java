@@ -31,7 +31,7 @@ public class JmsSenderRegistrar {
     @Profile("jms-sender")
     public JmsSender<Order> getJmsOrderSender() {
         //[DEBUG]
-        log.info(MethodLog.inLog(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        log.info(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName()));
         return new JmsSender<>(jms,
                 retriever.getQueue(Order.class),
                 retriever.getSource(Order.class));

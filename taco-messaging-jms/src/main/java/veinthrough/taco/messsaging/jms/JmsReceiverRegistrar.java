@@ -31,7 +31,7 @@ public class JmsReceiverRegistrar {
     @Profile("jms-receiver")
     public JmsReceiver<Order> getJmsJmsReceiver() {
         //[DEBUG]
-        log.info(MethodLog.inLog(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        log.info(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName()));
         return new JmsReceiver<>(jms,
                 retriever.getQueue(Order.class));
     }

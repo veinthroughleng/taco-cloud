@@ -19,7 +19,7 @@ public class DevConfig {
     public CommandLineRunner dataLoader(@Autowired UserRepository userRepo,
                                         @Autowired PasswordEncoder encoder) {
         //[DEBUG]
-        log.info(MethodLog.inLog("DevConfig.dataLoader"));
+        log.info(MethodLog.log("DevConfig.dataLoader"));
 
         return args ->
                 userRepo.save(new User("veinthrough", encoder.encode("123456"),

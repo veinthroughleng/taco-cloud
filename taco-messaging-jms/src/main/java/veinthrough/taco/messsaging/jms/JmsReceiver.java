@@ -14,7 +14,7 @@ public class JmsReceiver<T> implements MessageReceiver<T> {
         this.jms = jms;
         this.queue = queue;
         //[DEBUG]
-        log.info(MethodLog.inLog("constructor",
+        log.info(MethodLog.log("constructor",
                 "queue", queue));
     }
 

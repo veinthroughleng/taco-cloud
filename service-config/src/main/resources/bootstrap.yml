@@ -2,6 +2,9 @@ server:
   port: 8083
 
 spring:
+  profiles:
+    active: dev
+  #dev,prod,eureka,property,jpa-rest,rest,message,rabbit,rabbit-sender,rabbit-receiver,rabbit-listener,mpa,security,feign-hystrix
   cloud:
     config:
       server:

@@ -66,14 +66,14 @@ public class DesignTacoController {
                                 @ModelAttribute Order order, Model model) {
         //[DEBUG]
         final String METHOD = "processDesign";
-        log.info(MethodLog.inLog(METHOD,
+        log.info(MethodLog.log(METHOD,
                 "design", design.toString(),
                 "order", order.toString()));
 
         if (errors.hasErrors()) {
             addIngredientsToModel(model);
             //[DEBUG]
-            log.info(MethodLog.midLog(METHOD, 1,
+            log.info(MethodLog.log(METHOD, 1,
                     "model", model.toString()));
             return VIEW_DESIGN;
         }
@@ -82,7 +82,7 @@ public class DesignTacoController {
         order.addDesign(saved);
 
         //[DEBUG]
-        log.info(MethodLog.outLog(METHOD,
+        log.info(MethodLog.log(METHOD,
                 "design", design.toString(),
                 "order", order.toString()));
 

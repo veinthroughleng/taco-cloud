@@ -21,7 +21,7 @@ public class JmsListener<T> implements MessageListener, ObjectHandler<T> {
         this.queue = queue;
         this.type = type;
         this.converter = converter;
-        log.info(MethodLog.inLog("constructor",
+        log.info(MethodLog.log("constructor",
                 "queue", queue,
                 "type", type.getName(),
                 "converter", converter.toString()));
@@ -32,7 +32,7 @@ public class JmsListener<T> implements MessageListener, ObjectHandler<T> {
         //[DEBUG]
         String method = Thread.currentThread().getStackTrace()[1].getMethodName();
         try {
-            log.info(MethodLog.inLog(method,
+            log.info(MethodLog.log(method,
                     "message", message.toString(),
                     "property", message.getStringProperty("X_SOURCE"),
                     "body", message.getBody(type).toString()));

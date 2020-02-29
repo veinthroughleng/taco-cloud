@@ -23,7 +23,7 @@ public class RabbitListener<T> implements MessageListener, ObjectHandler<T> {
         this.type = type;
         this.queues.addAll(queues);
         this.converter = converter;
-        log.info(MethodLog.inLog("constructor",
+        log.info(MethodLog.log("constructor",
                 "queues", queues.toString(),
                 "type", type.getName(),
                 "converter", converter.toString()));
@@ -33,7 +33,7 @@ public class RabbitListener<T> implements MessageListener, ObjectHandler<T> {
     public void onMessage(Message message) {
         T object = (T)converter.fromMessage(message);
         //[DEBUG]
-        log.info(MethodLog.inLog(
+        log.info(MethodLog.log(
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "message", message.toString(),
                 "properties", message.getMessageProperties().getHeaders().get("X_SOURCE").toString(),

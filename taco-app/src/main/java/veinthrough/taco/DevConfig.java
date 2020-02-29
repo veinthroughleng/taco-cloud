@@ -26,7 +26,7 @@ public class DevConfig {
                                         @Autowired TacoRepository tacoRepo,
                                         @Autowired PasswordEncoder encoder) {
         //[DEBUG]
-        log.info(MethodLog.inLog("DevConfig.dataLoader"));
+        log.info(MethodLog.log("DevConfig.dataLoader"));
 
         return args ->
         {
