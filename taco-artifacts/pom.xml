@@ -91,6 +91,11 @@
                 <artifactId>service-turbine</artifactId>
                 <version>${taco.version}</version>
             </dependency>
+            <dependency>
+                <groupId>veinthrough</groupId>
+                <artifactId>service-admin</artifactId>
+                <version>${taco.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
