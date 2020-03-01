@@ -1,7 +1,7 @@
 spring:
   profiles:
-    active: dev, eureka, property, message, rabbit, rabbit-sender, jpa-rest, rest, security
-  #dev,prod,eureka,property,jpa-rest,rest,message,rabbit,rabbit-sender,rabbit-receiver,rabbit-listener,mpa,security,feign-hystrix
+    active: dev, eureka, admin-eureka, property, message, rabbit, rabbit-sender, jpa-rest, rest, security
+  #dev,prod,eureka,admin-eureka,property,jpa-rest,rest,message,rabbit,rabbit-sender,rabbit-receiver,rabbit-listener,mpa,security,feign-hystrix
   application:
     name: service-rest
   cloud:
