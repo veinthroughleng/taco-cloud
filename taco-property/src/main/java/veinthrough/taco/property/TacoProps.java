@@ -9,6 +9,7 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "taco")
 @Component
 @Data
-public class PageSizeProps {
+public class TacoProps {
     private Map<String, Integer> pageSizes = new HashMap<>();
+    private Map<String, Integer> discountCodes = new HashMap<>();
 }

@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import veinthrough.taco.data.TacoRepository;
 import veinthrough.taco.model.Taco;
-import veinthrough.taco.property.PageSizeProps;
+import veinthrough.taco.property.TacoProps;
 import veinthrough.utils.MethodLog;
 
 import java.util.List;
@@ -24,21 +24,21 @@ import static veinthrough.utils.Constants.HAL_JSON;
 @RepositoryRestController
 public class RecentTacosController {
     private TacoRepository tacoRepo;
-    private PageSizeProps pageSizeProps;
+    private TacoProps tacoProps;
 
     @Autowired
-    public RecentTacosController(TacoRepository tacoRepo, PageSizeProps pageSizeProps) {
+    public RecentTacosController(TacoRepository tacoRepo, TacoProps tacoProps) {
         //[DEBUG]
         log.info(MethodLog.log("RecentTacosController constructor",
-                "pageSizeProps.taco", pageSizeProps.toString()));
+                "pageSizeProps.taco", tacoProps.toString()));
         this.tacoRepo = tacoRepo;
-        this.pageSizeProps = pageSizeProps;
+        this.tacoProps = tacoProps;
     }
 
     @GetMapping(path="/tacos/recent", produces=HAL_JSON)
     public ResponseEntity<Resources<TacoResource>> recentTacos() {
         PageRequest page = PageRequest.of(
-                0, pageSizeProps.getPageSizes().get("taco"), Sort.by("createdAt").descending());
+                0, tacoProps.getPageSizes().get("taco"), Sort.by("createdAt").descending());
 
         List<Taco> tacos = tacoRepo.findAll(page).getContent();
         List<TacoResource> tacoResourcesList = new TacoAssembler().toResources(tacos);

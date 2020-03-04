@@ -60,7 +60,7 @@ public class DesignTacoController {
 
         //[DEBUG]
         log.info(MethodLog.log(
-                "postTaco", "After assigned id", 0,
+                "postTaco", 0, "After assigned id",
                 "taco", taco.toString()));
 
         Taco saved = tacoRepo.save(taco);

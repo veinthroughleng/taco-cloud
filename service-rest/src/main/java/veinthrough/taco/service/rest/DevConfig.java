@@ -1,4 +1,4 @@
-package veinthrough.taco.service;
+package veinthrough.taco.service.rest;
 
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +17,6 @@ import veinthrough.utils.MethodLog;
 
 import java.util.Date;
 
-import static veinthrough.taco.service.Ingredients.*;
-
 @Profile("dev")
 @Configuration
 @Slf4j
@@ -35,7 +33,7 @@ public class DevConfig {
         {
             ingredientRepo.saveAll(
                     Lists.newArrayList(
-                            FLTO, COTO, GRBF, CARN, TMTO, LETC, CHED, JACK, SLSA, SRCR));
+                            Ingredients.FLTO, Ingredients.COTO, Ingredients.GRBF, Ingredients.CARN, Ingredients.TMTO, Ingredients.LETC, Ingredients.CHED, Ingredients.JACK, Ingredients.SLSA, Ingredients.SRCR));
 
             userRepo.save(new User("veinthrough", encoder.encode("123456"),
                     "Craig Walls", "123 North Street", "Cross Roads", "TX",
@@ -45,17 +43,17 @@ public class DevConfig {
                     Lists.newArrayList(
                             Taco.builder().name("Carnivore")
                                     .ingredients(Lists.newArrayList(
-                                            FLTO, GRBF, CARN, SRCR, SLSA, CHED))
+                                            Ingredients.FLTO, Ingredients.GRBF, Ingredients.CARN, Ingredients.SRCR, Ingredients.SLSA, Ingredients.CHED))
                                     .createdAt(new Date())
                                     .build(),
                             Taco.builder().name("Bovine Bounty")
                                     .ingredients(Lists.newArrayList(
-                                            CARN, GRBF, CHED, JACK, SRCR))
+                                            Ingredients.CARN, Ingredients.GRBF, Ingredients.CHED, Ingredients.JACK, Ingredients.SRCR))
                                     .createdAt(new Date())
                                     .build(),
                             Taco.builder().name("Veg-Out")
                                     .ingredients(Lists.newArrayList(
-                                            FLTO, CARN, TMTO, LETC, SLSA))
+                                            Ingredients.FLTO, Ingredients.CARN, Ingredients.TMTO, Ingredients.LETC, Ingredients.SLSA))
                                     .createdAt(new Date())
                                     .build())
             );

@@ -1,4 +1,4 @@
-package veinthrough.taco.service;
+package veinthrough.taco.service.rest;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

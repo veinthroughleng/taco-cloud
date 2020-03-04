@@ -2,9 +2,14 @@ package veinthrough.taco.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import veinthrough.taco.model.Ingredient;
+import veinthrough.taco.model.Taco;
 import veinthrough.taco.model.href.*;
+import veinthrough.taco.model.resource.TacoResource;
 import veinthrough.taco.service.feign.RestClient;
 
 import java.util.List;
@@ -33,10 +38,17 @@ public class SPAController {
 
     @GetMapping(path = PATH_INGREDIENT)
     public List<IngredientMix> getAllIngredients() {
-        return rest.getAllIngredients().getContent().stream()
+        // [DEBUG]
+        Resources<Resource<Ingredient>> ingredients = rest.getAllIngredients();
+        return ingredients.getContent().stream()
                 // has exposed id
                 .map(IngredientMix::new)
                 .collect(Collectors.toList());
+
+//        return rest.getAllIngredients().getContent().stream()
+//                // has exposed id
+//                .map(IngredientMix::new)
+//                .collect(Collectors.toList());
     }
 
     @GetMapping(path = PATH_TACO + "/{id}")
@@ -46,16 +58,28 @@ public class SPAController {
 
     @GetMapping(path = PATH_TACO + PATH_RECENT)
     public Iterable<TacoMix> recentTacos() {
-        return rest.recentTacos().getContent().stream()
+        // [DEBUG]
+        Resources<TacoResource> tacos = rest.recentTacos();
+        return tacos.getContent().stream()
                 .map(converter::toTaco)
                 .collect(Collectors.toList());
+
+//        return rest.recentTacos().getContent().stream()
+//                .map(converter::toTaco)
+//                .collect(Collectors.toList());
     }
 
     @GetMapping(path = PATH_TACO)
     public Iterable<TacoMix> tacosOfUser() {
-        return rest.tacosOfUser().getContent().stream()
+        // [DEBUG]
+        Resources<Resource<Taco>> tacos = rest.tacosOfUser();
+        return tacos.getContent().stream()
                 .map(converter::toTaco)
                 .collect(Collectors.toList());
+
+//        return rest.tacosOfUser().getContent().stream()
+//                .map(converter::toTaco)
+//                .collect(Collectors.toList());
     }
 
     @PostMapping(path = PATH_TACO)

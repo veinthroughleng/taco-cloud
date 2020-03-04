@@ -11,3 +11,7 @@ feign:
   hystrix:
     # should enable manually, isn't automatically configured in latest versions
     enabled: true
+
+security:
+  jwt:
+    token: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2ZWludGhyb3VnaCIsImlhdCI6MTU4MzMyMDA1MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiIsIkFVVEhfV1JJVEUiXSwiZXhwIjoxNTgzMzI2MDUwfQ.kMp1VA16fkO_kXkVMLNwMwjaeaOrFhYyRvC5MlDW4kwxWfG7PuvSvro90ivP2ckyH_NQeQ00IJdcPfJGRyv9xw

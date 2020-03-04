@@ -16,4 +16,6 @@ public class Constants {
     public static final String PATH_RECENT = "/recent";
 
     public static final String DEFAULT_DIRECT_EXCHANGE = "amq.direct";
+
+    public static final Long DEFAULT_TOKEN_EXPIRATION_MINUTES = 60L;
 }

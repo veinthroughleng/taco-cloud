@@ -2,18 +2,22 @@ taco:
   page-sizes:
     order: 10
     taco: 10
+  discount-codes:
+    discount-1: 10
+    discount-2: 20
 
-  message:
-    sources:
-      order: WEB
-    queues:
-      order: taco.queue.order
-    routing-keys:
-      order: taco.routingKey.order
-    topics:
-      order: taco.topic.order
+message:
+  sources:
+    order: WEB
+  queues:
+    order: taco.queue.order
+  routing-keys:
+    order: taco.routingKey.order
+  topics:
+    order: taco.topic.order
 
-  discount:
-    codes:
-      discount-1: 10
-      discount-2: 20
+
+security:
+  signing-key: spring-security-@Jwt!&Secret^#
+  token-expiration-minutes: 100
+  h2-console-secured: false

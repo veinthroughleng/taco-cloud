@@ -1,7 +1,7 @@
 {
   "properties": [
     {
-      "name": "taco.discount.codes",
+      "name": "taco.discountCodes",
       "type": "java.util.Map<java.lang.String, java.lang.Float>",
       "description": "A map of discount codes to a discount percentage."
     },
@@ -11,24 +11,39 @@
       "description": "A map of different page size to display different objects."
     },
     {
-      "name": "taco.message.queues",
+      "name": "message.queues",
       "type": "java.util.Map<java.lang.String, java.lang.String>",
       "description": "A map of different messaging queue in jms/artemis."
     },
     {
-      "name": "taco.message.routing-keys",
+      "name": "message.routing-keys",
       "type": "java.util.Map<java.lang.String, java.lang.String>",
       "description": "A map of different routing key in rabbit-mp."
     },
     {
-      "name": "taco.message.topics",
+      "name": "message.topics",
       "type": "java.util.Map<java.lang.String, java.lang.String>",
       "description": "A map of different topics in kafka."
     },
     {
-      "name": "taco.message.sources",
+      "name": "message.sources",
       "type": "java.util.Map<java.lang.String, java.lang.String>",
       "description": "A map of different Source of message."
+    },
+    {
+      "name": "security.signing-key",
+      "type": "java.lang.String",
+      "description": "Signing key for SignatureAlgorithm.HS512."
+    },
+    {
+      "name": "security.token-expiration-minutes",
+      "type": "java.lang.String",
+      "description": "Expiration time for token in minutes."
+    },
+    {
+      "name": "security.h2-console-secured",
+      "type": "java.lang.String",
+      "description": "Whether secure h2-console or not."
     }
   ]
 }
