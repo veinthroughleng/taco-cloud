@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -18,11 +17,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import veinthrough.taco.property.SecurityProps;
-import veinthrough.taco.service.rest.security.exception.Http401AuthenticationEntryPoint;
 import veinthrough.utils.MethodLog;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static veinthrough.utils.Constants.*;
 
 @Configuration
 @EnableWebSecurity
@@ -32,57 +32,28 @@ import java.util.List;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
     private SecurityProps securityProps;
-
-
-    private static final String[] URL_H2_CONSOLE = {
-            "/h2-console",
-            "/h2-console/**"
-    };
-
-    private static final String[] URL_DATA_REST = {
-            "/rest/ingredients",
-            "/rest/ingredients/**",
-            "/rest/tacos",
-            "/rest/tacos/**",
-            "/rest/orders",
-            "/rest/orders/**",
-            "/rest/users",
-            "/rest/users/**"
-    };
-
-    private static String[] URL_WHITELIST = {
-            // -- register url
-            "/rest/ingredients",
-            "/rest/ingredients/**",
-
-            // -- login
-            "/login",
-            "/signin",
-
-            // -- swagger ui
-            "/v2/api-docs",
-            "/swagger-resources",
-            "/swagger-resources/**",
-            "/configuration/ui",
-            "/configuration/security",
-            "/swagger-ui.html",
-            "/webjars/**"
-    };
+    private static String[] URL_WHITELIST = null;
 
     @Autowired
     public SecurityConfig(UserDetailsService userDetailsService, SecurityProps securityProps) {
         this.userDetailsService = userDetailsService;
         this.securityProps = securityProps;
+        updateWhiteList();
+    }
 
+    private void updateWhiteList() {
+        List<String> whiteList = Lists.newArrayList(URL_LOGIN);
+//        whiteList.addAll(Lists.newArrayList(URL_DATA_INGREDIENTS));
+        whiteList.addAll(Lists.newArrayList(URL_SWAGGER));
         if (!securityProps.isH2ConsoleSecured()) {
-            List<String> list = Lists.newArrayList(URL_WHITELIST);
-            list.addAll(Lists.newArrayList(URL_H2_CONSOLE));
-            URL_WHITELIST = list.toArray(new String[0]);
+            whiteList.addAll(Lists.newArrayList(URL_H2_CONSOLE));
+            URL_WHITELIST = whiteList.toArray(new String[0]);
             // [DEBUG]
             log.info(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "isH2ConsoleSecured", String.valueOf(securityProps.isH2ConsoleSecured()),
                     "URL_WHITELIST", Arrays.toString(URL_WHITELIST)));
         }
+
     }
 
     @Bean
@@ -91,8 +62,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public AuthenticationManager getAuthenticationManager() throws Exception {
-        return authenticationManager();
+    @Override
+    public AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
     }
 
     @Override
@@ -104,42 +76,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .authorizeRequests()
                 .antMatchers(URL_WHITELIST).permitAll()
-                //.antMatchers(HttpMethod.OPTIONS).permitAll() // needed for Angular/CORS
-                .anyRequest().authenticated().and()
+//                .antMatchers(HttpMethod.OPTIONS).permitAll() // needed for Angular/CORS
+                .anyRequest().authenticated();
 
-                .exceptionHandling()
-                .authenticationEntryPoint(
-                        new Http401AuthenticationEntryPoint("Basic realm=\"Taco Cloud\"")).and()
+//                .exceptionHandling()
+//                .authenticationEntryPoint(
+//                        new Http401AuthenticationEntryPoint("Basic realm=\"Taco Cloud\"")).and()
 
-                //.addFilter(new JWTLoginFilter(authenticationManager(), securityProps.getSigningKey()))
-                .addFilter(new JWTAuthenticationFilter(authenticationManager(), securityProps.getSigningKey()))
+//                .addFilter(new JWTLoginFilter(authenticationManager(), securityProps.getSigningKey()))
+//                .addFilter(new JWTAuthenticationFilter(authenticationManager(), securityProps.getSigningKey()))
 
                 // logout
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
-                .permitAll().and()
+//                .logout()
+//                .logoutUrl("/logout")
+//                .logoutSuccessUrl("/")
+//                .permitAll().and()
 
                 // ignore csrf: for debug purposes
-                //.csrf()
-                //.ignoringAntMatchers(URL_H2_CONSOLE).and()
-                // NOTE: Result in all POST requests be ignored
-                //.csrf()
-                //.ignoringAntMatchers(URL_DATA_REST).and()
-
-                // Allow pages to be loaded in frames from the same origin; needed for H2-Console
-                .headers()
-                .frameOptions()
-                .sameOrigin();
+//                .csrf()
+//                .ignoringAntMatchers(URL_H2_CONSOLE).and()
+//                 NOTE: Result in all POST requests be ignored
+//                .csrf()
+//                .ignoringAntMatchers(URL_DATA_REST);
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //Spring Data JPA authentication/UserDetailsService
-        auth.authenticationProvider(
-                // CustomAuthenticationProvider used,
-                // JWTLoginFilter will never be accessed
-                new CustomAuthenticationProvider(
-                        userDetailsService, encoder()));
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(encoder());
     }
 }

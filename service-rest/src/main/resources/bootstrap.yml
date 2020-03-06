@@ -9,9 +9,8 @@ spring:
     config:
       uri: http://localhost:8083
 
-# JWT Config
-jwt:
-  header: Authorization
-  secret: NDU0NTY4amhmc3NkeHp6eGNxdzIlMjFAJTIxQCUyM2ZmNQ==
-  #120min
-  expiration: 7200000
+security:
+  oauth2:
+    client:
+      client-id: service-app
+      client-secret: 123456
