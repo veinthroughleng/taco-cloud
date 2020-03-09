@@ -1,4 +1,4 @@
-package veinthrough.taco.service;
+package veinthrough.taco.service.turbine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

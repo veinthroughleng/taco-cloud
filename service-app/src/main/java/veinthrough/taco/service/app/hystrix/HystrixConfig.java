@@ -1,4 +1,4 @@
-package veinthrough.taco.service.app;
+package veinthrough.taco.service.app.hystrix;
 
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 import lombok.extern.slf4j.Slf4j;

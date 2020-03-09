@@ -13,7 +13,6 @@ import veinthrough.taco.model.User;
 import veinthrough.taco.model.href.OrderHref;
 import veinthrough.taco.model.href.TacoHref;
 import veinthrough.taco.model.resource.TacoResource;
-import veinthrough.taco.service.app.FailedRestHandler;
 
 import static veinthrough.taco.utils.Constants.*;
 

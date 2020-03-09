@@ -1,4 +1,4 @@
-package veinthrough.taco.service;
+package veinthrough.taco.service.admin;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;

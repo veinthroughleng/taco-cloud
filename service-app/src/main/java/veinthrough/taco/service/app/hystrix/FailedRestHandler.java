@@ -1,4 +1,4 @@
-package veinthrough.taco.service.app;
+package veinthrough.taco.service.app.hystrix;
 
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
