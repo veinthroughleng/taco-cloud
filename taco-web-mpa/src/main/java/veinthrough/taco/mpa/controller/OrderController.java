@@ -13,8 +13,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import veinthrough.taco.data.OrderRepository;
 import veinthrough.taco.model.Order;
 import veinthrough.taco.model.User;
-import veinthrough.taco.property.PageSizeProps;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.property.TacoProps;
+import veinthrough.taco.utils.MethodLog;
 
 import javax.validation.Valid;
 
@@ -24,15 +24,15 @@ import javax.validation.Valid;
 @SessionAttributes("order")
 public class OrderController {
     private OrderRepository orderRepo;
-    private PageSizeProps pageSizeProps;
+    private TacoProps tacoProps;
 
     @Autowired
-    public OrderController(OrderRepository orderRepo, PageSizeProps pageSizeProps) {
+    public OrderController(OrderRepository orderRepo, TacoProps tacoProps) {
         //[DEBUG]
         log.info(MethodLog.log("OrderController constructor",
-                "pageSizeProps.order", pageSizeProps.getPageSizes().get("order").toString()));
+                "pageSizeProps.order", tacoProps.getPageSizes().get("order").toString()));
         this.orderRepo = orderRepo;
-        this.pageSizeProps = pageSizeProps;
+        this.tacoProps = tacoProps;
     }
 
     @GetMapping("/current")
@@ -71,7 +71,7 @@ public class OrderController {
 
     @GetMapping
     public String ordersOfUser(@AuthenticationPrincipal User user, Model model) {
-        Pageable pageable = PageRequest.of(0, pageSizeProps.getPageSizes().get("order"));
+        Pageable pageable = PageRequest.of(0, tacoProps.getPageSizes().get("order"));
         model.addAttribute("orders",
                 orderRepo.findByUserOrderByPlacedAtDesc(user, pageable));
         return "orderList";

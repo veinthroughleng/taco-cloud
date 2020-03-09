@@ -3,9 +3,9 @@ package veinthrough.taco.messsaging.rabbit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import veinthrough.taco.messsaging.MessageSender;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.utils.MethodLog;
 
-import static veinthrough.utils.Constants.DEFAULT_DIRECT_EXCHANGE;
+import static veinthrough.taco.utils.Constants.DEFAULT_DIRECT_EXCHANGE;
 
 @Slf4j
 public class RabbitSender<T> implements MessageSender<T> {

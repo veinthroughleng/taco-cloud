@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jms.core.JmsTemplate;
 import veinthrough.taco.messsaging.MessagingPropertiesRetriever;
 import veinthrough.taco.model.Order;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.utils.MethodLog;
 
 @Configuration
 @Slf4j

@@ -19,7 +19,7 @@ public class IngredientMix extends Ingredient implements Href {
                 resource.getContent().getName(),
                 resource.getContent().getType());
         setHref(resource.getId().getHref());
-        // id may not if didn't expose id
+        // id may be empty if didn't expose id
         if (getId() == null) {
             setId(getIdFromHref(href));
         }

@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.support.converter.MessageConverter;
 import veinthrough.taco.messsaging.ObjectHandler;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.utils.MethodLog;
 
 import javax.jms.JMSException;
 import javax.jms.Message;

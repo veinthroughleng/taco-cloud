@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.Resource;
 import veinthrough.taco.model.Order;
-import veinthrough.taco.model.User;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class OrderMix implements Href {
     private Date placedAt;
 
     // attributes
-    private User user;
+    private UserMix user;
     private String name;
     private String street;
     private String city;
@@ -31,8 +30,7 @@ public class OrderMix implements Href {
 
 
 
-    public OrderMix(Resource<Order> resource, List<TacoMix> tacos) {
-        this.user = resource.getContent().getUser();
+    public OrderMix(Resource<Order> resource, UserMix user, List<TacoMix> tacos) {
         this.name = resource.getContent().getName();
         this.street = resource.getContent().getStreet();
         this.city = resource.getContent().getCity();
@@ -53,7 +51,8 @@ public class OrderMix implements Href {
             setId(Long.valueOf(getIdFromHref(href)));
         }
 
-        // 3. set tacos
+        // 3. set user and tacos
+        setUser(user);
         setTacos(tacos);
     }
 }

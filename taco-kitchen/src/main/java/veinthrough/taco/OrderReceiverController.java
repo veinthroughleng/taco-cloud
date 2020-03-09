@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import veinthrough.taco.messsaging.MessageReceiver;
 import veinthrough.taco.model.Order;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.utils.MethodLog;
 
 @Profile({"jms-receiver", "rabbit-receiver"})
 @Controller

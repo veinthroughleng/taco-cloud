@@ -1,6 +1,7 @@
 package veinthrough.taco.model;
 
 import lombok.*;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
@@ -14,7 +15,9 @@ import java.util.List;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 @AllArgsConstructor
+@Builder
 @Table(name = "Taco_Order")
+@RestResource(rel="orders", path="orders")
 public class Order {
     private static final long serialVersionUID = 1L;
 
@@ -22,13 +25,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; // non-final, used in convert href to prototype
 
-    @ManyToMany(targetEntity = Taco.class)
-    private List<Taco> tacos = new ArrayList<>();
+    @ManyToOne(targetEntity=User.class)
+    private User user;
 
     // attributes
-    private Date placedAt;
-    @ManyToOne
-    private User user;
     @NotBlank(message = "Name is required.")
     private String name;
     @NotBlank(message = "Street is required.")
@@ -47,28 +47,14 @@ public class Order {
     @Digits(integer = 3, fraction = 0, message = "Credit card CVV should be 3 digits.")
     private String ccCVV;
 
+    private Date placedAt;
+
+    @ManyToMany(targetEntity = Taco.class)
+    private List<Taco> tacos = new ArrayList<>();
+
     @PrePersist
     void placedAt() {
         this.placedAt = new Date();
-    }
-
-    @Builder
-    public Order(Long id, User user, String name,
-                 String street, String city, String state, String zip,
-                 String ccNumber, String ccExpiration, String ccCVV,
-                 Date placedAt, List<Taco> tacos) {
-        this.user = user;
-        this.name = name;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.ccNumber = ccNumber;
-        this.ccExpiration = ccExpiration;
-        this.ccCVV = ccCVV;
-        setPlacedAt(placedAt);
-        setId(id);
-        setTacos(tacos);
     }
 
     public void addDesign(Taco taco) {

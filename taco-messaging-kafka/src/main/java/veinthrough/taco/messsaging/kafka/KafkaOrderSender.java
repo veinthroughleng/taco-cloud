@@ -7,7 +7,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import veinthrough.taco.messsaging.MessageSender;
 import veinthrough.taco.model.Order;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.utils.MethodLog;
 
 @Slf4j
 @Service

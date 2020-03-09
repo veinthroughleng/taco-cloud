@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 import veinthrough.taco.messsaging.MessageReceiver;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.utils.MethodLog;
 
 @Slf4j
 public class RabbitReceiver<T> implements MessageReceiver<T> {

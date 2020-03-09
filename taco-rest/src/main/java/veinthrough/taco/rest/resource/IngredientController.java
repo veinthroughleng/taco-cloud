@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static veinthrough.utils.Constants.JSON;
-import static veinthrough.utils.Constants.PATH_INGREDIENT;
+import static veinthrough.taco.utils.Constants.JSON;
+import static veinthrough.taco.utils.Constants.PATH_INGREDIENTS;
 
 @RestController
-@RequestMapping(path = PATH_INGREDIENT,
+@RequestMapping(path = PATH_INGREDIENTS,
         produces = JSON,
         consumes = JSON)
 @CrossOrigin(origins = "*")

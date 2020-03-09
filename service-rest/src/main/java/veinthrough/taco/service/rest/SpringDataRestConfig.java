@@ -1,5 +1,6 @@
 package veinthrough.taco.service.rest;
 
+import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -18,7 +19,6 @@ import veinthrough.taco.model.Taco;
 @EnableEntityLinks
 @Profile("jpa-rest")
 public class SpringDataRestConfig extends RepositoryRestConfigurerAdapter {
-
     @SuppressWarnings("Convert2Lambda")
     @Bean
     public ResourceProcessor<PagedResources<Resource<Taco>>>
@@ -32,6 +32,27 @@ public class SpringDataRestConfig extends RepositoryRestConfigurerAdapter {
                         links.linkFor(Taco.class)
                                 .slash("recent")
                                 .withRel("recents"));
+
+                return resource;
+            }
+        };
+    }
+
+    @SuppressWarnings("Convert2Lambda")
+    @Bean
+    public ResourceProcessor<PagedResources<Resource<Order>>>
+    orderProcessor(EntityLinks links) {
+
+        return new ResourceProcessor<PagedResources<Resource<Order>>>() {
+            @SneakyThrows
+            @Override
+            public PagedResources<Resource<Order>> process(
+                    PagedResources<Resource<Order>> resource) {
+                resource.add(
+                        links.linkFor(Order.class)
+                                .slash("user/USER_ID")
+                                .withRel("orders of user"));
+
                 return resource;
             }
         };

@@ -29,6 +29,10 @@
             <groupId>veinthrough</groupId>
             <artifactId>taco-property</artifactId>
         </dependency>
+        <dependency>
+            <groupId>veinthrough</groupId>
+            <artifactId>taco-security</artifactId>
+        </dependency>
 
         <!-- spring boot -->
         <dependency>

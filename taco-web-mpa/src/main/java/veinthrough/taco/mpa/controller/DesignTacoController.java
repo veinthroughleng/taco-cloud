@@ -13,8 +13,8 @@ import veinthrough.taco.data.TacoRepository;
 import veinthrough.taco.model.Order;
 import veinthrough.taco.model.Taco;
 import veinthrough.taco.model.User;
-import veinthrough.utils.ListsToMap;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.utils.ListsToMap;
+import veinthrough.taco.utils.MethodLog;
 
 import javax.validation.Valid;
 

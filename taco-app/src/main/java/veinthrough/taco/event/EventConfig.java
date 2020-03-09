@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import veinthrough.taco.messsaging.MessageSender;
 import veinthrough.taco.model.Order;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.utils.MethodLog;
 
 @Configuration
 @Slf4j

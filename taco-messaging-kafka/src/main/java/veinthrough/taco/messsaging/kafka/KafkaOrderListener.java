@@ -9,8 +9,8 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.listener.MessageListener;
 import org.springframework.stereotype.Component;
 import veinthrough.taco.model.Order;
-import veinthrough.utils.DateFormat;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.utils.DateFormat;
+import veinthrough.taco.utils.MethodLog;
 
 @Slf4j
 @Component

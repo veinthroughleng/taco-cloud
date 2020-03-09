@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.annotation.HandleAfterCreate;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 import veinthrough.taco.messsaging.MessageSender;
 import veinthrough.taco.model.Order;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.utils.MethodLog;
 
 @RepositoryEventHandler(Order.class)
 @Slf4j

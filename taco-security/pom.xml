@@ -13,6 +13,7 @@
     <packaging>jar</packaging>
 
     <dependencies>
+        <!-- taco-cloud -->
         <dependency>
             <groupId>veinthrough</groupId>
             <artifactId>taco-model</artifactId>
@@ -21,6 +22,12 @@
             <groupId>veinthrough</groupId>
             <artifactId>taco-data</artifactId>
         </dependency>
+        <dependency>
+            <groupId>veinthrough</groupId>
+            <artifactId>taco-property</artifactId>
+        </dependency>
+
+        <!-- spring-boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>

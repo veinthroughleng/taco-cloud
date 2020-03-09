@@ -6,7 +6,7 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.support.converter.MessageConverter;
 import veinthrough.taco.messsaging.ObjectHandler;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.utils.MethodLog;
 
 import java.util.ArrayList;
 import java.util.List;

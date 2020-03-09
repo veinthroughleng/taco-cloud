@@ -1,6 +1,7 @@
 package veinthrough.taco.model.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.LinkBuilder;
 import org.springframework.hateoas.ResourceAssembler;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 import veinthrough.taco.model.Taco;
 
 @Component
+@Profile("rest")
 public class TacoAssembler
         implements ResourceAssembler<Taco, TacoResource> {
     private EntityLinks entityLinks;

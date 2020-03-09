@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-@ConfigurationProperties(prefix = "taco.message")
+@ConfigurationProperties(prefix = "message")
 @Component
 @Data
 @Profile("message")

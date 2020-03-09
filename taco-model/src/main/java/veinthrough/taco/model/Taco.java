@@ -13,16 +13,12 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @RestResource(rel="tacos", path="tacos")
 public class Taco{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id; // non-final, used in convert href to prototype
-
-    @NotNull
-    @Size(min = 1, message = "You must choose at least 1 ingredient.")
-    @ManyToMany(targetEntity=Ingredient.class)
-    private List<Ingredient> ingredients;
 
     // attributes
     @NotNull
@@ -30,18 +26,23 @@ public class Taco{
     private String name;
     private Date createdAt;
 
+    @NotNull
+    @Size(min = 1, message = "You must choose at least 1 ingredient.")
+    @ManyToMany(targetEntity=Ingredient.class)
+    private List<Ingredient> ingredients;
+
     @PrePersist
     void createdAt() {
         this.createdAt = new Date();
     }
 
-    @Builder
-    public Taco(Long id, String name, Date createdAt, List<Ingredient> ingredients) {
-        this(id, name, ingredients);
-        setCreatedAt(createdAt);
+    public Taco(Long id, String name, List<Ingredient> ingredients) {
+        setName(name);
+        setId(id);
+        this.ingredients = ingredients;
     }
 
-    public Taco(Long id, String name, List<Ingredient> ingredients) {
+    public Taco(String name, List<Ingredient> ingredients) {
         setName(name);
         setId(id);
         this.ingredients = ingredients;

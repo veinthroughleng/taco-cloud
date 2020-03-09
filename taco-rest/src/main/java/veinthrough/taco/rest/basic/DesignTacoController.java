@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.*;
 import veinthrough.taco.data.TacoRepository;
 import veinthrough.taco.data.converter.IngredientByNameAndTypeConverter;
 import veinthrough.taco.model.Taco;
-import veinthrough.utils.MethodLog;
+import veinthrough.taco.utils.MethodLog;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static veinthrough.utils.Constants.JSON;
-import static veinthrough.utils.Constants.PATH_DESIGN;
+import static veinthrough.taco.utils.Constants.JSON;
+import static veinthrough.taco.utils.Constants.PATH_DESIGN;
 
 @RestController
 @RequestMapping(path = PATH_DESIGN,
@@ -60,7 +60,7 @@ public class DesignTacoController {
 
         //[DEBUG]
         log.info(MethodLog.log(
-                "postTaco", "After assigned id", 0,
+                "postTaco", 0, "After assigned id",
                 "taco", taco.toString()));
 
         Taco saved = tacoRepo.save(taco);
