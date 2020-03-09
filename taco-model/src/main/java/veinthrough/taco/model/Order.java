@@ -1,6 +1,7 @@
 package veinthrough.taco.model;
 
 import lombok.*;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@Profile("jpa-rest")
 @Entity
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 @AllArgsConstructor

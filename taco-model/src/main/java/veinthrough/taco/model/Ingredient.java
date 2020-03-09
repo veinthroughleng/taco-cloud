@@ -1,6 +1,7 @@
 package veinthrough.taco.model;
 
 import lombok.*;
+import org.springframework.context.annotation.Profile;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 @Builder
 @AllArgsConstructor
 @Entity
+@Profile("jpa-rest")
 @NoArgsConstructor
 //JPA requires that entities have a no-arguments  constructor
 public class Ingredient{

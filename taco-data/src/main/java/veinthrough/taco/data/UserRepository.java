@@ -6,7 +6,7 @@ import veinthrough.taco.model.User;
 
 import java.util.Optional;
 
-@Profile({"jpa-rest", "security"})
+@Profile("jpa-rest")
 public interface UserRepository extends CrudRepository<User, Long> {
     Optional<User> findByUsername(String username);
 }

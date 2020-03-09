@@ -2,6 +2,7 @@ package veinthrough.taco.model;
 
 import com.google.common.collect.Lists;
 import lombok.*;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
+@Profile("jpa-rest")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

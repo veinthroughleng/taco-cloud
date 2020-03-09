@@ -39,14 +39,26 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        // oauth_client_details db table
+        // in memory
         clients.inMemory().withClient(oAuth2ClientProps.getClientId())
                 .resourceIds(oAuth2ResourceProps.getResourceName())
                 .authorizedGrantTypes(oAuth2ClientProps.getGrantTypes().toArray(new String[0]))
                 .scopes(oAuth2ClientProps.getScopes().toArray(new String[0]))
                 .authorities(oAuth2ClientProps.getAuthorities().toArray(new String[0]))
                 .secret(passwordEncoder.encode(oAuth2ClientProps.getClientSecret()))
-                .accessTokenValiditySeconds(oAuth2ClientProps.getAccessTokenValiditySeconds().intValue());
+                .accessTokenValiditySeconds(oAuth2ClientProps.getAccessTokenValiditySeconds().intValue())
+                .autoApprove(true);
+
+        // oauth_client_details db table
+//        clients.jdbc(this.dataSource)
+//                .withClient(oAuth2ClientProps.getClientId())
+//                .resourceIds(oAuth2ResourceProps.getResourceName())
+//                .authorizedGrantTypes(oAuth2ClientProps.getGrantTypes().toArray(new String[0]))
+//                .scopes(oAuth2ClientProps.getScopes().toArray(new String[0]))
+//                .authorities(oAuth2ClientProps.getAuthorities().toArray(new String[0]))
+//                .secret(passwordEncoder.encode(oAuth2ClientProps.getClientSecret()))
+//                .accessTokenValiditySeconds(oAuth2ClientProps.getAccessTokenValiditySeconds().intValue())
+//                .autoApprove(true);
 
     }
 
@@ -63,5 +75,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         security.allowFormAuthenticationForClients()
                 .checkTokenAccess("permitAll()");
 //                .tokenKeyAccess("permitAll()")
+//                .checkTokenAccess("isAuthenticated()");
     }
 }
