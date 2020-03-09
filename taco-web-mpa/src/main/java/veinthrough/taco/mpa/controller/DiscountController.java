@@ -17,8 +17,7 @@ public class DiscountController {
 
     @Autowired
     public DiscountController(TacoProps tacoProps) {
-        //[DEBUG]
-        log.info(MethodLog.log("DiscountController constructor",
+        log.debug(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "discountCodes", tacoProps.getDiscountCodes().toString()));
         this.tacoProps = tacoProps;
     }

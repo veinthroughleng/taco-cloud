@@ -13,8 +13,9 @@ public class JmsReceiver<T> implements MessageReceiver<T> {
     JmsReceiver(JmsTemplate jms, String queue) {
         this.jms = jms;
         this.queue = queue;
-        //[DEBUG]
-        log.info(MethodLog.log("constructor",
+
+        log.debug(MethodLog.log(
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "queue", queue));
     }
 

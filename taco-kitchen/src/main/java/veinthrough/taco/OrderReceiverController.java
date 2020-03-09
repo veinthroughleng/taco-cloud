@@ -21,8 +21,8 @@ public class OrderReceiverController {
     @Autowired
     public void setReceiver(MessageReceiver<Order> receiver) {
         this.receiver = receiver;
-        //[DEBUG]
-        log.info(MethodLog.log(
+
+        log.debug(MethodLog.log(
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "receiver", receiver.toString()
         ));
@@ -31,10 +31,11 @@ public class OrderReceiverController {
     @GetMapping("/receive")
     public String receiveOrder(Model model) {
         Order order = receiver.receiveObject();
-        //[DEBUG]
-        log.info(MethodLog.log(
+
+        log.debug(MethodLog.log(
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
-                "Message received", 1,
+                1,
+                "Message received",
                 "order", order.toString()));
         if (order != null) {
             model.addAttribute("order", order);

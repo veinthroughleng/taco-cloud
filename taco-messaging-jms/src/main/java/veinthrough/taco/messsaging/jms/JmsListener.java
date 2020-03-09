@@ -29,10 +29,9 @@ public class JmsListener<T> implements MessageListener, ObjectHandler<T> {
 
     @Override
     public void onMessage(Message message) {
-        //[DEBUG]
-        String method = Thread.currentThread().getStackTrace()[1].getMethodName();
         try {
-            log.info(MethodLog.log(method,
+            log.debug(MethodLog.log(
+                    Thread.currentThread().getStackTrace()[1].getMethodName(),
                     "message", message.toString(),
                     "property", message.getStringProperty("X_SOURCE"),
                     "body", message.getBody(type).toString()));

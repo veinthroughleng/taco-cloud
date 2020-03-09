@@ -6,15 +6,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import veinthrough.taco.model.Order;
-import veinthrough.taco.utils.MethodLog;
 
 @Configuration
 @Slf4j
 public class JmsConfig {
     @Bean
     public MappingJackson2MessageConverter jmsMessageConverter() {
-        //[DEBUG]
-        log.info(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName()));
         MappingJackson2MessageConverter messageConverter =
                 new MappingJackson2MessageConverter();
         messageConverter.setTypeIdPropertyName("_typeId");

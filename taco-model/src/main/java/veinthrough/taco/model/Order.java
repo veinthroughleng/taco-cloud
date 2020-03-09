@@ -52,6 +52,14 @@ public class Order {
     @ManyToMany(targetEntity = Taco.class)
     private List<Taco> tacos = new ArrayList<>();
 
+    public Order(String name, String street, String city, String state, String zip) {
+        this.name = name;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+    }
+
     @PrePersist
     void placedAt() {
         this.placedAt = new Date();

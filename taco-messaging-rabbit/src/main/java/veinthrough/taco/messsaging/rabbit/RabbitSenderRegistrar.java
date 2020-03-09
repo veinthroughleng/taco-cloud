@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import veinthrough.taco.messsaging.MessagingPropertiesRetriever;
 import veinthrough.taco.model.Order;
-import veinthrough.taco.utils.MethodLog;
 
 @Slf4j
 @Component
@@ -30,8 +29,6 @@ public class RabbitSenderRegistrar {
     @Bean
     @Profile("rabbit-sender")
     public RabbitSender<Order> getRabbitSender() {
-        //[DEBUG]
-        log.info(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName()));
         return new RabbitSender<>(rabbit,
                 properties.getRoutingKey(Order.class),
                 properties.getSource(Order.class));

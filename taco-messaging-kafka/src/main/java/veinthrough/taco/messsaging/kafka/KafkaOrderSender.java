@@ -21,8 +21,9 @@ public class KafkaOrderSender implements MessageSender<Order> {
     public KafkaOrderSender(KafkaTemplate<String, Order> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
         this.topic = "#{taco.message.topic.order}";
-        //[DEBUG]
-        log.info(MethodLog.log("constructor",
+
+        log.debug(MethodLog.log(
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "topic", topic));
     }
 

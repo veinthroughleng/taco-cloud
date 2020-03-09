@@ -64,16 +64,18 @@ public class DesignTacoController {
     //automatically call IngredientByIdConverter: string --> Ingredient
     public String processDesign(@Valid @ModelAttribute Taco design, Errors errors,
                                 @ModelAttribute Order order, Model model) {
-        //[DEBUG]
-        final String METHOD = "processDesign";
-        log.info(MethodLog.log(METHOD,
+        final String METHOD = Thread.currentThread().getStackTrace()[1].getMethodName();
+        log.debug(MethodLog.log(
+                METHOD,
+                1,
                 "design", design.toString(),
                 "order", order.toString()));
 
         if (errors.hasErrors()) {
             addIngredientsToModel(model);
-            //[DEBUG]
-            log.info(MethodLog.log(METHOD, 1,
+            log.debug(MethodLog.log(
+                    METHOD,
+                    2,
                     "model", model.toString()));
             return VIEW_DESIGN;
         }
@@ -81,8 +83,9 @@ public class DesignTacoController {
         Taco saved = designRepo.save(design);
         order.addDesign(saved);
 
-        //[DEBUG]
-        log.info(MethodLog.log(METHOD,
+        log.debug(MethodLog.log(
+                METHOD,
+                3,
                 "design", design.toString(),
                 "order", order.toString()));
 

@@ -15,8 +15,9 @@ public class JmsSender<T> implements MessageSender<T> {
         this.jms = jms;
         this.queue = queue;
         this.source = source;
-        //[DEBUG]
-        log.info(MethodLog.log("constructor",
+
+        log.debug(MethodLog.log(
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "queue", queue,
                 "source", source));
     }

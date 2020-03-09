@@ -14,8 +14,8 @@ public class MessagingPropertiesRetriever {
     @Autowired
     public MessagingPropertiesRetriever(
             MessagingProps messagingProps) {
-        //[DEBUG]
-        log.info(MethodLog.log("constructor",
+        log.debug(MethodLog.log(
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "messagingProps", messagingProps.toString()));
         this.messagingProps = messagingProps;
     }

@@ -17,8 +17,8 @@ public class RabbitSender<T> implements MessageSender<T> {
         this.rabbit = rabbit;
         this.routingKey = routingKey;
         this.source = source;
-        //[DEBUG]
-        log.info(MethodLog.log("constructor",
+        log.debug(MethodLog.log(
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "routingKey", routingKey,
                 "source", source));
     }

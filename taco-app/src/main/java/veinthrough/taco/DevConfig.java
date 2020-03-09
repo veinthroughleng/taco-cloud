@@ -13,7 +13,7 @@ import veinthrough.taco.data.TacoRepository;
 import veinthrough.taco.data.UserRepository;
 import veinthrough.taco.model.Taco;
 import veinthrough.taco.model.User;
-import veinthrough.taco.utils.MethodLog;
+
 import static veinthrough.taco.Ingredients.*;
 
 @Profile("dev")
@@ -25,9 +25,6 @@ public class DevConfig {
                                         @Autowired UserRepository userRepo,
                                         @Autowired TacoRepository tacoRepo,
                                         @Autowired PasswordEncoder encoder) {
-        //[DEBUG]
-        log.info(MethodLog.log("DevConfig.dataLoader"));
-
         return args ->
         {
             ingredientRepo.saveAll(

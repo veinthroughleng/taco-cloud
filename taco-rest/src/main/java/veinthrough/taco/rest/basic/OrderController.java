@@ -29,8 +29,8 @@ public class OrderController {
 
     @Autowired
     public OrderController(OrderRepository orderRepo, TacoProps tacoProps, UserRepository userRepo) {
-        //[DEBUG]
-        log.info(MethodLog.log("OrderController constructor",
+        log.debug(MethodLog.log(
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "pageSizeProps.order", tacoProps.toString()));
         this.orderRepo = orderRepo;
         this.tacoProps = tacoProps;
@@ -42,13 +42,11 @@ public class OrderController {
         Pageable pageable = PageRequest.of(0, tacoProps.getPageSizes().get("order"));
         User user = userRepo.findById(userId).orElse(null);
         return user == null ? null :
-                orderRepo.findByUserOrderByPlacedAtDesc(user, pageable);
+                orderRepo.findByUserIdOrderByPlacedAtDesc(userId, pageable);
     }
 
     @GetMapping("/order/{id}")
     public Order orderById(@PathVariable("id") Long id) {
-        //[DEBUG]
-        log.info(MethodLog.log("orderById"));
         return orderRepo.findById(id).orElse(null);
     }
 

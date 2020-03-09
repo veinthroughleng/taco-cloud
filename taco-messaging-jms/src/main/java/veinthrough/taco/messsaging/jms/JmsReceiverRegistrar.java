@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jms.core.JmsTemplate;
 import veinthrough.taco.messsaging.MessagingPropertiesRetriever;
 import veinthrough.taco.model.Order;
-import veinthrough.taco.utils.MethodLog;
 
 @Configuration
 @Slf4j
@@ -30,8 +29,6 @@ public class JmsReceiverRegistrar {
     @Bean
     @Profile("jms-receiver")
     public JmsReceiver<Order> getJmsJmsReceiver() {
-        //[DEBUG]
-        log.info(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName()));
         return new JmsReceiver<>(jms,
                 retriever.getQueue(Order.class));
     }

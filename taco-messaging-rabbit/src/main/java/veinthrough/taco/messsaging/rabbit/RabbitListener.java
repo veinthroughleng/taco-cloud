@@ -32,8 +32,7 @@ public class RabbitListener<T> implements MessageListener, ObjectHandler<T> {
     @Override
     public void onMessage(Message message) {
         T object = (T)converter.fromMessage(message);
-        //[DEBUG]
-        log.info(MethodLog.log(
+        log.debug(MethodLog.log(
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "message", message.toString(),
                 "properties", message.getMessageProperties().getHeaders().get("X_SOURCE").toString(),

@@ -28,8 +28,8 @@ public class RecentTacosController {
 
     @Autowired
     public RecentTacosController(TacoRepository tacoRepo, TacoProps tacoProps) {
-        //[DEBUG]
-        log.info(MethodLog.log("RecentTacosController constructor",
+        log.debug(MethodLog.log(
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "pageSizeProps.taco", tacoProps.toString()));
         this.tacoRepo = tacoRepo;
         this.tacoProps = tacoProps;

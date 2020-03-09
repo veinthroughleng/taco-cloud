@@ -28,8 +28,7 @@ public class OrderController {
 
     @Autowired
     public OrderController(OrderRepository orderRepo, TacoProps tacoProps) {
-        //[DEBUG]
-        log.info(MethodLog.log("OrderController constructor",
+        log.debug(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "pageSizeProps.order", tacoProps.getPageSizes().get("order").toString()));
         this.orderRepo = orderRepo;
         this.tacoProps = tacoProps;
@@ -45,9 +44,10 @@ public class OrderController {
                                SessionStatus sessionStatus,
                                @AuthenticationPrincipal User user,
                                Model model) {
-        //[DEBUG]
-        final String METHOD = "processorOrder";
-        log.info(MethodLog.log(METHOD,
+        final String METHOD = Thread.currentThread().getStackTrace()[1].getMethodName();
+        log.debug(MethodLog.log(
+                METHOD,
+                1,
                 "order", order.toString(),
                 "errors", errors.toString(),
                 "model", model.toString()));
@@ -61,8 +61,9 @@ public class OrderController {
         orderRepo.save(order);
         sessionStatus.setComplete();
 
-        //[DEBUG]
-        log.info(MethodLog.log(METHOD,
+        log.debug(MethodLog.log(
+                METHOD,
+                2,
                 "order", order.toString(),
                 "errors", errors.toString(),
                 "model", model.toString()));
@@ -73,7 +74,7 @@ public class OrderController {
     public String ordersOfUser(@AuthenticationPrincipal User user, Model model) {
         Pageable pageable = PageRequest.of(0, tacoProps.getPageSizes().get("order"));
         model.addAttribute("orders",
-                orderRepo.findByUserOrderByPlacedAtDesc(user, pageable));
+                orderRepo.findByUserIdOrderByPlacedAtDesc(user.getId(), pageable));
         return "orderList";
     }
 }
