@@ -38,10 +38,14 @@ public class DevConfig {
                             FLTO, COTO, GRBF, CARN, TMTO, LETC, CHED, JACK, SLSA, SRCR));
 
             User veinthrough1 = userRepo.save(new User("veinthrough1", encoder.encode("123456"),
-                    "Veinthrough Leng", "123 North Street", "Cross Roads", "TX",
+                    "Veinthrough Leng 1", "123 North Street", "Cross Roads", "TX",
                     "76227", "123-123-1234"));
             User veinthrough2 = userRepo.save(new User("veinthrough2", encoder.encode("123456"),
-                    "Veinthrough Leng", "123 North Street", "Cross Roads", "TX",
+                    "Veinthrough Leng 2", "123 North Street", "Cross Roads", "TX",
+                    "76227", "123-123-1234"));
+            // a user without order
+            User veinthrough3 = userRepo.save(new User("veinthrough3", encoder.encode("123456"),
+                    "Veinthrough Leng 3", "123 North Street", "Cross Roads", "TX",
                     "76227", "123-123-1234"));
 
             Taco carnivore = tacoRepo.save(new Taco("Carnivore",

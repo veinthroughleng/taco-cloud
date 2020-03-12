@@ -66,6 +66,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     // only "password" authorizedGrantTypes need a authenticationManager
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints.authenticationManager(authenticationManager);
+//                .tokenStore(tokenStore);
     }
 
     @Override

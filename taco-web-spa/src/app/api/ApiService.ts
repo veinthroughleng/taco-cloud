@@ -9,7 +9,7 @@ export class ApiService {
   }
 
   get(path: String) {
-    return this.http.get(Constants.REST_URL_BASIS + path);
+    return this.http.get(Constants.URL_RESOURCE_BASIS + path);
   }
 
 }

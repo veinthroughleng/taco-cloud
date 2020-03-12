@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -20,7 +21,6 @@ import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true)
 @Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
@@ -46,21 +46,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                // needed for Angular/CORS
+                .requestMatchers().antMatchers(HttpMethod.OPTIONS).and()
                 .cors().and().csrf().disable()
 
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
                 .authorizeRequests()
                 .antMatchers(URL_WHITELIST).permitAll()
-                // needed for Angular/CORS
-//                .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated().and()
 
                 // logout
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
-                .permitAll().and()
+                .permitAll();
 
                 // ignore csrf: for debug purposes
 //                .csrf()
@@ -68,12 +68,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // NOTE: Result in all POST requests be ignored
 //                .csrf()
 //                .ignoringAntMatchers(URL_DATA_REST).and()
-
-                // Allow pages to be loaded in frames from the same origin;
-                // needed for H2-Console
-                .headers()
-                .frameOptions()
-                .sameOrigin();
     }
 
     @Override

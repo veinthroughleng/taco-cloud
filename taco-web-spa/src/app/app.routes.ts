@@ -7,6 +7,7 @@ import { DesignComponent } from './design/design.component';
 import { LocationsComponent } from './locations/locations.component';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
+import {UserComponent} from "./user/user.component";
 
 export const routes: Routes = [
   {
@@ -16,6 +17,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'user',
+    component: UserComponent
   },
   {
     path: 'recents',

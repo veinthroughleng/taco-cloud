@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 @Data
 // only attributes, no id/placedAt
 public class OrderHref {
+    private String user;
     private List<String> tacos;
 
     // attributes
-    private User user;
     private String name;
     private String street;
     private String city;
@@ -23,7 +23,6 @@ public class OrderHref {
     private String ccCVV;
 
     public OrderHref(OrderMix mix) {
-        this.user = mix.getUser();
         this.name = mix.getName();
         this.street = mix.getStreet();
         this.city = mix.getCity();
@@ -32,6 +31,9 @@ public class OrderHref {
         this.ccNumber = mix.getCcNumber();
         this.ccExpiration = mix.getCcExpiration();
         this.ccCVV = mix.getCcCVV();
+
+        // build href for user and tacos
+        setUser(mix.getUser().getHref());
         setTacos(
                 mix.getTacos().stream()
                         .map(TacoMix::getHref)

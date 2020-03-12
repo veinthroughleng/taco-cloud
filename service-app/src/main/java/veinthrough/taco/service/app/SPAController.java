@@ -2,9 +2,11 @@ package veinthrough.taco.service.app;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import veinthrough.taco.model.Order;
 import veinthrough.taco.model.User;
 import veinthrough.taco.model.href.*;
 import veinthrough.taco.service.app.feign.RestClient;
@@ -69,8 +71,16 @@ public class SPAController {
         return tacoPosted;
     }
 
+    @GetMapping(path = PATH_USER_INFO)
+    public UserMix userInfo(@AuthenticationPrincipal UserMix user) {
+        log.debug(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName(),
+                "authenticated user", user.toString()));
+        // delete password for security purpose
+        return UserMix.userInfo(user);
+    }
+
     @GetMapping(path = PATH_ORDERS)
-    public Iterable<OrderMix> OrdersOfUser(@AuthenticationPrincipal User user) {
+    public Iterable<OrderMix> OrdersOfUser(@AuthenticationPrincipal UserMix user) {
         log.debug(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "authenticated user", user.toString()));
 
@@ -85,14 +95,18 @@ public class SPAController {
 
     @PostMapping(path = PATH_ORDERS)
     @ResponseStatus(HttpStatus.CREATED)
-    public OrderMix postOrder(@RequestBody OrderMix order, @AuthenticationPrincipal User user) {
+    public OrderMix postOrder(@RequestBody OrderMix order, @AuthenticationPrincipal UserMix user) {
         log.debug(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "authenticated user", user.toString()));
 
         order.setUser(new UserMix(rest.getUser(user.getId())));
-        OrderMix orderPosted = converter.toOrder(
-                rest.postOrder(
-                        new OrderHref(order)));
+        // [DEBUG]
+        OrderHref toBePost = new OrderHref(order);
+        Resource<Order> posted = rest.postOrder(toBePost);
+        OrderMix orderPosted = converter.toOrder(posted);
+//        OrderMix orderPosted = converter.toOrder(
+//                rest.postOrder(
+//                        new OrderHref(order)));
         log.debug(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "order to be posted", order.toString(),
                 "order posted", orderPosted.toString()));

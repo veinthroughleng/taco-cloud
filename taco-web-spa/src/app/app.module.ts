@@ -29,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { CartComponent } from './cart/cart.component';
 import { CartService } from './cart/cart-service';
+import {AuthService} from "./login/auth-service";
+import {UserComponent} from "./user/user.component";
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { CartService } from './cart/cart-service';
     HeaderComponent,
     HomeComponent,
     LoginComponent,
+    UserComponent,
     FooterComponent,
     RecentTacosComponent,
     SpecialsComponent,
@@ -60,6 +63,7 @@ import { CartService } from './cart/cart-service';
   providers: [
     ApiService,
     CartService,
+    AuthService,
     RecentTacosService,
   ],
   bootstrap: [AppComponent]

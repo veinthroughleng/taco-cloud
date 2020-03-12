@@ -1,7 +1,7 @@
 import {Component, OnInit, Injectable} from '@angular/core';
 import {CartService} from './cart-service';
 import {HttpClient} from '@angular/common/http';
-import {Constants} from "../utils/Constants";
+import {AuthService} from "../login/auth-service";
 
 @Component({
   selector: 'taco-cart',
@@ -24,7 +24,8 @@ export class CartComponent implements OnInit {
     tacos: []
   };
 
-  constructor(private cart: CartService, private httpClient: HttpClient) {
+  constructor(private cart: CartService, private httpClient: HttpClient,
+              private authService: AuthService) {
     this.cart = cart;
   }
 
@@ -50,9 +51,10 @@ export class CartComponent implements OnInit {
       }
     );
 
-    this.httpClient.post(
-      Constants.REST_URL_ORDER, this.model)
-      .subscribe(r => this.cart.emptyCart());
+    this.authService.postOrder(this.model)
+      .subscribe(
+        order =>
+          this.cart.emptyCart());
 
     // TODO: Do something after this...navigate to a thank you page or something
   }

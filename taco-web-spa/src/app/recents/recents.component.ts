@@ -1,5 +1,4 @@
 import {Component, OnInit, Injectable} from '@angular/core';
-import {Http} from '@angular/http';
 import {HttpClient} from '@angular/common/http';
 import {Constants} from "../utils/Constants";
 
@@ -17,7 +16,7 @@ export class RecentTacosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.httpClient.get(Constants.REST_URL_RECENT) // <1>
+    this.httpClient.get(Constants.URL_REST_RECENT) // <1>
       .subscribe(
         // prototype version
         (data: any) => this.recentTacos = data

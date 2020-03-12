@@ -1,0 +1,25 @@
+
+<!--<div class="form-group">-->
+  <!--<button class="btn btn-default" (click)="logout()">Logout</button>-->
+<!--</div>-->
+
+<form id="logoutForm" (ngSubmit)="logout()">
+  <div style="text-align:left; width:100%;">
+    <big-button label="Log out"></big-button>
+  </div>
+  <p>If logout is not triggered, click <a href="login">here</a> to logout instead.</p>
+</form>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div>
+      <b>{{loggedUser}}:</b>
+    <pre>{{userInfo | json}}</pre>
+    </div>
+    <div *ngIf="orders">
+      <b>orders:</b>
+      <pre>{{orders | json}}</pre>
+    </div>
+
+  </div>
+</div>

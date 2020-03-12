@@ -1,7 +1,8 @@
 import {Component, OnInit, Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router/';
 import {CartService} from '../cart/cart-service';
+import {AuthService} from '../login/auth-service';
 import {Constants} from "../utils/Constants";
 
 @Component({
@@ -25,12 +26,15 @@ export class DesignComponent implements OnInit {
   cheeses = [];
   sauces = [];
 
-  constructor(private httpClient: HttpClient, private router: Router, private cart: CartService) {
+  constructor(private httpClient: HttpClient, private router: Router,
+              private authService: AuthService, private cart: CartService) {
   }
 
   // tag::ngOnInit[]
   ngOnInit() {
-    this.httpClient.get(Constants.REST_URL_INGREDIENT)
+    this.authService.checkCredentials();
+
+    this.httpClient.get(Constants.URL_REST_INGREDIENTS)
       .subscribe((data: any) => {
         // prototype version
         this.allIngredients = data;
@@ -68,13 +72,14 @@ export class DesignComponent implements OnInit {
 
   onSubmit() {
     // href version
-    // // map to every ingredient to href
+    // map to every ingredient to href
     // this.model.ingredients =
     //   this.model.ingredients.map(ingredient => ingredient._links.self.href);
 
-    this.httpClient.post(
-      Constants.REST_URL_TACO, this.model
-    ).subscribe(taco => this.cart.addToCart(taco));
+    this.authService.postTaco(this.model)
+      .subscribe(
+        taco =>
+          this.cart.addToCart(taco));
 
     this.router.navigate(['/cart']);
   }
