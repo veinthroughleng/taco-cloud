@@ -1,6 +1,7 @@
 package veinthrough.taco.messsaging.rabbit;
 
 import com.google.common.collect.Lists;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerEndpoint;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
@@ -10,10 +11,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import veinthrough.taco.messsaging.MessagingPropertiesRetriever;
 import veinthrough.taco.model.Order;
+import veinthrough.taco.utils.MethodLog;
 
 import java.util.List;
 
 @Profile("rabbit-listener")
+@Slf4j
 @Configuration
 public class RabbitListenerRegistrar implements RabbitListenerConfigurer {
     private RabbitListenerEndpointRegistrar registrar;
@@ -51,6 +54,9 @@ public class RabbitListenerRegistrar implements RabbitListenerConfigurer {
     }
 
     private List<RabbitListener<?>> getRabbitListeners() {
+        log.debug(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName(),
+                "Rabbit listener registered",
+                "queue", properties.getQueue(Order.class)));
         return Lists.newArrayList(
                 new RabbitListener<>(
                         Lists.newArrayList(properties.getQueue(Order.class)),

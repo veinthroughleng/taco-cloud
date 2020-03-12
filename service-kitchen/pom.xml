@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service-rest</artifactId>
+    <artifactId>service-kitchen</artifactId>
 
     <dependencies>
-        <!-- taco cloud-->
+        <!-- taco cloud -->
         <dependency>
             <groupId>veinthrough</groupId>
             <artifactId>utils</artifactId>
@@ -23,16 +23,12 @@
         </dependency>
         <dependency>
             <groupId>veinthrough</groupId>
-            <artifactId>taco-data</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>veinthrough</groupId>
-            <artifactId>taco-security</artifactId>
+            <artifactId>taco-property</artifactId>
         </dependency>
         <dependency>
             <groupId>veinthrough</groupId>
             <artifactId>taco-messaging-rabbit</artifactId>
-        </dependency >
+        </dependency>
 
         <!-- database -->
         <dependency>
@@ -41,39 +37,23 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- spring boot-->
+        <!-- spring boot starters -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-rest</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-        </dependency>
-
-        <!-- swagger -->
-        <!--<dependency>-->
-            <!--<groupId>io.springfox</groupId>-->
-            <!--<artifactId>springfox-swagger2</artifactId>-->
-            <!--<version>${swagger.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>io.springfox</groupId>-->
-            <!--<artifactId>springfox-swagger-ui</artifactId>-->
-            <!--<version>${swagger.version}</version>-->
-        <!--</dependency>-->
 
         <!-- test -->
         <dependency>
@@ -84,10 +64,16 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
 
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

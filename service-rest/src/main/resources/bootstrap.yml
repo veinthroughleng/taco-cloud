@@ -1,7 +1,8 @@
 spring:
   profiles:
-    active: dev, eureka, admin-eureka, property, jpa-rest, rest, security
-#      active: dev, eureka, admin-eureka, property, message, rabbit, rabbit-sender, jpa-rest, rest, security
+    active: dev, eureka, admin-eureka, property, message, rabbit, rabbit-sender, jpa-rest, rest, security
+    # Non-messaging active profiles, for DEBUG purpose
+#    active: dev, eureka, admin-eureka, property, jpa-rest, rest, security
   #dev,prod,eureka,admin-eureka,property,jpa-rest,rest,message,rabbit,rabbit-sender,rabbit-receiver,rabbit-listener,mpa,security,feign-hystrix
   application:
     name: service-rest

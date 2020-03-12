@@ -1,8 +1,0 @@
-spring:
-  rabbitmq:
-    template:
-      default-receive-queue: taco.routing-key.default
-    host: 192.168.1.103
-    port: 5672
-    username: veinthrough
-    password: 123456

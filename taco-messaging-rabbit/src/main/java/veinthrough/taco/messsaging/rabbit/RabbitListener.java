@@ -23,7 +23,7 @@ public class RabbitListener<T> implements MessageListener, ObjectHandler<T> {
         this.type = type;
         this.queues.addAll(queues);
         this.converter = converter;
-        log.info(MethodLog.log("constructor",
+        log.debug(MethodLog.log(Thread.currentThread().getStackTrace()[1].getMethodName(),
                 "queues", queues.toString(),
                 "type", type.getName(),
                 "converter", converter.toString()));
