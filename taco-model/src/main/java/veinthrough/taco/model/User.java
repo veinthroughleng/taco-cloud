@@ -26,7 +26,6 @@ public class User implements UserDetails {
 
     // attributes
     private String username;
-    @NonNull
     private String password;
     private String fullname;
     private String street;
