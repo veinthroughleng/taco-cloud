@@ -13,11 +13,12 @@ import veinthrough.taco.model.User;
 import veinthrough.taco.model.href.OrderHref;
 import veinthrough.taco.model.href.TacoHref;
 import veinthrough.taco.model.resource.TacoResource;
+import veinthrough.taco.service.app.hystrix.FailedRestHandler;
 
 import static veinthrough.taco.utils.Constants.*;
 
 @FeignClient(value = "service-rest",
-//        fallback = FailedRestHandler.class,
+        fallback = FailedRestHandler.class,
 //        configuration = FeignClientConfig.class,
         path = PATH_BASIC_REST)
 public interface RestClient {
