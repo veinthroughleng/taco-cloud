@@ -6,7 +6,7 @@
     <parent>
         <groupId>veinthrough</groupId>
         <artifactId>taco-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0-DEMO</version>
         <relativePath>../</relativePath>
     </parent>
 
@@ -18,7 +18,7 @@
         <!-- taco cloud -->
         <dependency>
             <groupId>veinthrough</groupId>
-            <artifactId>utils</artifactId>
+            <artifactId>taco-utils</artifactId>
         </dependency>
         <dependency>
             <groupId>veinthrough</groupId>
