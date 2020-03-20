@@ -12,6 +12,7 @@ spring:
           uri: https://github.com/veinthroughleng/taco-cloud-config.git
           search-paths: application, profile
 #          default-label: master
+          default-label: cloud-foundry
           username: veinthroughleng@gmail.com
           password: l336415p
 

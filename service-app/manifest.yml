@@ -1,0 +1,13 @@
+---
+applications:
+  - name: veinthrough-service-app
+    random-route: false
+    path: ./target/service-app-1.0.0-DEMO-cf.jar
+    memory: 608M
+    disk_quota: 384M
+    instances: 1
+    env:
+      JAVA_OPTS: '-XX:MaxMetaspaceSize=192M -Xss1M -Xmx160M -XX:ReservedCodeCacheSize=144M -XX:MaxDirectMemorySize=16M'
+      JBP_CONFIG_OPEN_JDK_JRE: '{ memory_calculator: { stack_threads: 96 } }'
+    services:
+      - veinthrough-eureka

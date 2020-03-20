@@ -88,11 +88,30 @@
     </dependencyManagement>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/logback.xml</exclude>
+                </excludes>
+            </resource>
+        </resources>
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <mainClass>${start-class}</mainClass>
+                        <!-- this is necessary as we're not using the Boot parent -->
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -100,6 +119,9 @@
                     <inherited>true</inherited>
                     <version>3.8.1</version>
                     <configuration>
+                        <excludes>
+                            <exclude>**/cloud/config/*.java</exclude>
+                        </excludes>
                         <source>1.8</source>
                         <target>1.8</target>
                         <!-- compilerArgs>

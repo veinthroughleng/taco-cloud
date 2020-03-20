@@ -2,10 +2,14 @@ import {HttpHeaders} from '@angular/common/http';
 
 export class Constants {
   // resource
-  static REST_HOST = '192.168.1.103';
-  static REST_PORT = 8080;
+  static SECURED_URL = true;
+  static REST_HOST = 'veinthrough-service-app.cfapps.io';
+  static SECURED_REST_PORT = 443;
+  static UNSECURED_REST_PORT = 80;
+  // static REST_PORT = 8080;
   static RESOURCE_PREFIX = '/rest';
-  static URL_REST_BASIS = 'http://' + Constants.REST_HOST + ':' + Constants.REST_PORT;
+  static URL_REST_BASIS = Constants.SECURED_URL ? 'https://' + Constants.REST_HOST + ':' + Constants.SECURED_REST_PORT :
+    'http://' + Constants.REST_HOST + ':' + Constants.UNSECURED_REST_PORT;
   static URL_RESOURCE_BASIS = Constants.URL_REST_BASIS + Constants.RESOURCE_PREFIX;
   static URL_REST_ORDERS = Constants.URL_RESOURCE_BASIS + '/orders';
   static URL_REST_USERINFO = Constants.URL_RESOURCE_BASIS + '/userInfo';
@@ -14,7 +18,7 @@ export class Constants {
   static URL_REST_RECENT = Constants.URL_REST_TACOS + '/recent';
 
   // SPA
-  static SPA_HOST = '192.168.1.103';
+  static SPA_HOST = 'veinthrough-web-spa.cfapps.io';
   static SPA_PORT = 4200;
   static URL_SPA_BASIS = 'http://' + Constants.SPA_HOST + ':' + Constants.SPA_PORT;
   static URL_REDIRECT = Constants.URL_SPA_BASIS;

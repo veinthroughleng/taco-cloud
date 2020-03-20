@@ -1,0 +1,11 @@
+---
+applications:
+  - name: veinthrough-service-config
+    random-route: false
+    path: ./target/service-config-1.0.0-DEMO-cf.jar
+    memory: 384M
+    disk_quota: 256M
+    instances: 1
+    env:
+      JAVA_OPTS: '-XX:MaxMetaspaceSize=128M -Xss1M -Xmx96M -XX:ReservedCodeCacheSize=96M -XX:MaxDirectMemorySize=16M'
+      JBP_CONFIG_OPEN_JDK_JRE: '{ memory_calculator: { stack_threads: 48 } }'
