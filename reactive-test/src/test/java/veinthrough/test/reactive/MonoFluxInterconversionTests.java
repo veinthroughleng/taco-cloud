@@ -1,4 +1,4 @@
-package veinthrough.test.reactor;
+package veinthrough.test.reactive;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
